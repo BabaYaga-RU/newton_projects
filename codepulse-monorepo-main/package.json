@@ -1,0 +1,46 @@
+{
+  "name": "codepulse-monorepo",
+  "version": "1.0.0",
+  "description": "CodePulse Monorepo - Online IDE with Code Execution",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "e2e"
+  ],
+  "scripts": {
+    "dev": "npm run dev --prefix backend",
+    "build": "npm run build --prefix backend",
+    "test": "npm run test --prefix backend",
+    "test:coverage": "npm run test:coverage --prefix backend",
+    "lint": "npm run lint --prefix backend",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "keywords": [
+    "code-execution",
+    "online-ide",
+    "monorepo",
+    "html",
+    "nodejs",
+    "glot-io",
+    "qa",
+    "testing"
+  ],
+  "author": "Patrick Araujo",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "prettier": "^3.2.4",
+    "typescript": "^5.4.5"
+  }
+}
