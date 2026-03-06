@@ -9,29 +9,16 @@ interface ImportMetaEnv {
 
 const API_URL = ((import.meta as unknown) as { env: ImportMetaEnv }).env.VITE_API_URL || 'https://codepulse-monorepo-backend.vercel.app';
 
-interface QATestResult {
-  testId: number;
-  status: 'passed' | 'failed';
-  actual: string;
-}
-
-interface QAExecuteResponse {
-  success: boolean;
-  results: QATestResult[];
-}
-
 export function App() {
-  const [code, setCode] = useState('// Welcome to CodePulse\nconsole.log("System Ready");');
+  const [code, setCode] = useState('// Welcome to CodePulse\nconsole.log("Hello World");');
   const [output, setOutput] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [qaResults, setQaResults] = useState<QAExecuteResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleExecute = async () => {
     setIsLoading(true);
     setOutput('');
     setError(null);
-    setQaResults(null);
 
     try {
       const response = await fetch(`${API_URL}/api/execute`, {
@@ -42,9 +29,7 @@ export function App() {
 
       const data = await response.json();
 
-      if (data.results && Array.isArray(data.results)) {
-        setQaResults(data as QAExecuteResponse);
-      } else if (data.output || data.error) {
+      if (data.output || data.error) {
         setOutput(data.output || '');
         setError(data.error || null);
       } else {
@@ -62,9 +47,9 @@ export function App() {
       <header>
         <h1>
           <img src={logo} alt="CodePulse Logo" className="header-logo" />
-          CodePulse - Engineering-Focused IDE
+          CodePulse - Simple IDE
         </h1>
-        <p>High-performance code execution with automated QA pipeline</p>
+        <p>Online code execution environment</p>
       </header>
 
       <div className="container">
@@ -88,54 +73,29 @@ export function App() {
             disabled={isLoading}
             className="execute-btn"
           >
-            {isLoading ? "⏳ Processing..." : "▶️ Launch Execution"}
+            {isLoading ? "Processing..." : "Execute"}
           </button>
         </div>
 
         <div className="output-section">
-          <label>Terminal Output / QA Results:</label>
+          <label>Output:</label>
           <div className="output-box">
-            {isLoading && <p className="loading">Accessing sandboxed environment...</p>}
-            {error && <p className="error">❌ System Error: {error}</p>}
-
-            {qaResults && ( 
-              <div className="qa-container">
-                <h3 className={qaResults.success ? 'status-pass' : 'status-fail'}>
-                  {qaResults.success ? '✅ All QA Tests Passed' : '❌ QA Pipeline Failed'}
-                </h3>
-                <ul className="test-list">
-                  {qaResults.results.map((test) => (
-                    <li key={test.testId} className={`test-item ${test.status}`}>
-                      <span className="test-icon">{test.status === 'passed' ? '✔️' : '✘️'}</span>
-                      <span className="test-name">Test Case #{test.testId}</span>
-                      {test.status === 'failed' && ( 
-                        <pre className="test-diff">Expected output mismatch. Actual: {test.actual}</pre>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {output && !qaResults && ( 
+            {isLoading && <p className="loading">Executing...</p>}
+            {error && <p className="error">Error: {error}</p>}
+            {output && !error && (
               <pre className="output-text">
                 <code>{output}</code>
               </pre>
             )}
-
-            {!isLoading && !error && !output && !qaResults && (
-              <p className="placeholder">Awaiting code execution... Click "Launch" to start.</p>
+            {!isLoading && !error && !output && (
+              <p className="placeholder">Click "Execute" to run your code.</p>
             )}
           </div>
         </div>
       </div>
 
       <footer className="footer">
-        <p>
-          CodePulse v1.0.0 | 
-          <a href="https://github.com/lojadosapo" target="_blank" rel="noreferrer">Engineering Portfolio</a>
-          | Professional Software Quality Assurance Showcase
-        </p>
+        <p>CodePulse - Simple Online IDE</p>
       </footer>
     </div>
   );
