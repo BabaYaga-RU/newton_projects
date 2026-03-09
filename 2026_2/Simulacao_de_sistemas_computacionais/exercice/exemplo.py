@@ -1,8 +1,5 @@
-'''
-pip install pandas
-pip install tensorflow
-pip install scikit-learn
-'''
+# pip install pandas numpy tensorflow scikit-learn
+
 import os
 import pandas as pd
 import numpy as np
