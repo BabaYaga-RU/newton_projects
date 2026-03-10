@@ -1,0 +1,133 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "editor.rulers": [80, 120],
+    "workbench.colorTheme": "Default Dark Modern",
+    "explorer.compactFolders": false,
+    "code-runner.executorMap": {
+        "python": "clear ; python -u",
+        "java": "cd $dir && clear && javac $fileName && java $fileNameWithoutExt",
+        "cpp": "clear ; g++ $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "c": "clear ; gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "javascript": "clear ; node $fileName",
+        "php": "clear ; php $fileName",
+        "perl": "clear ; perl $fileName",
+        "ruby": "clear ; ruby $fileName",
+        "go": "clear ; go run $fileName",
+        "lua": "clear ; lua $fileName",
+        "groovy": "clear ; groovy $fileName",
+        "powershell": "clear ; pwsh $fileName -NoExit -Command \"Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force\"",
+        "batch": "clear ; cmd /c $fileName",
+        "bash": "clear ; bash $fileName",
+        "fsharp": "clear ; fsharpi $fileName",
+        "fsharpcore": "clear ; dotnet fsi $fileName",
+        "vbscript": "clear ; cscript $fileName",
+        "typescript": "clear ; ts-node $fileName",
+        "coffeescript": "clear ; coffee $fileName",
+        "scala": "clear ; scala $fileName",
+        "swift": "clear ; swift $fileName",
+        "julia": "clear ; julia $fileName",
+        "crystal": "clear ; crystal $fileName",
+        "ocaml": "clear ; ocaml $fileName",
+        "r": "clear ; Rscript $fileName",
+        "applescript": "clear ; osascript $fileName",
+        "elixir": "clear ; elixir $fileName",
+        "vb": "clear ; mono $fileName",
+        "clojure": "clear ; clojure $fileName",
+        "haxe": "clear ; haxe --run $fileName",
+        "objective-c": "clear ; clang -framework Foundation $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "rust": "clear ; rustc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "racket": "clear ; racket $fileName",
+        "scheme": "clear ; scheme $fileName",
+        "autohotkey": "clear ; autohotkey $fileName",
+        "autoit": "clear ; autoit $fileName",
+        "kotlin": "clear ; kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+        "dart": "clear ; dart $fileName",
+        "pascal": "clear ; fpc $fileName && ./$fileNameWithoutExt",
+        "haskell": "clear ; runhaskell $fileName",
+        "nim": "clear ; nim compile --run $fileName",
+        "d": "clear ; dmd $fileName && ./$fileNameWithoutExt",
+        "lisp": "clear ; sbcl --script $fileName",
+        "kit": "clear ; kit $fileName",
+        "v": "clear ; v run $fileName",
+        "scss": "clear ; sass $fileName",
+        "sass": "clear ; sass $fileName",
+        "cuda": "clear ; nvcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "less": "clear ; lessc $fileName",
+        "fortran": "clear ; gfortran $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        "ring": "clear ; ring $fileName",
+        "sml": "clear ; sml $fileName",
+        "zig": "clear ; zig run $fileName",
+        "mojo": "clear ; mojo $fileName",
+        "erlang": "clear ; erl -noshell -s $fileName -s init stop",
+        "spwn": "clear ; spwn run $fileName",
+        "pkl": "clear ; pkl $fileName",
+        "gleam": "clear ; gleam run $fileName"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.ignoreSelection": true,
+    "redhat.telemetry.enabled": true,
+    "cmake.options.advanced": {
+        "build": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        },
+        "launch": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        },
+        "debug": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        }
+    },
+    "terminal.integrated.wordWrap": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "editor.renderWhitespace": "all",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": ["-NoExit", "-Command", "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force"]
+        }
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "editor.fontFamily": "Consolas, 'Dank Mono', 'Source Code Pro', 'Fira Code', Menlo, 'Inconsolata', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Ubuntu Mono', 'Courier New', Courier, Monaco, monospace",
+    "terminal.integrated.fontFamily": "",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.fixAll.unusedImports": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "python.languageServer": "Pylance",
+    "python.formatting.autopep8Args": [
+        "--indent-size=4",
+        "--max-line-length=80"
+    ],
+    "python.linting.flake8Args": [],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "cSpell.enabled": false,
+    "workbench.productIconTheme": "bongocat",
+    "python.createEnvironment.trigger": "off",
+    "chat.tools.urls.autoApprove": {
+        "https://github.com": {
+            "approveRequest": false,
+            "approveResponse": true
+        },
+        "https://api.github.com": {
+            "approveRequest": false,
+            "approveResponse": true
+        }
+    },
+    "workbench.startupEditor": "none"
+}
