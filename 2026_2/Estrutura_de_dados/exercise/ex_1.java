@@ -1,4 +1,5 @@
 /*
+Prazo: 22/03/2026
 1. Escreva um programa que leia dois vetores inteiros com dez posições cada. 
 A partir desses vetores, carregue um terceiro vetor onde o valor 
 de cada elemento será a média dos elementos de mesmo índice nos dois vetores anteriores.
