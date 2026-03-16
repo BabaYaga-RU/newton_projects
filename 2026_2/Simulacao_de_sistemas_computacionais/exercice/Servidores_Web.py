@@ -212,8 +212,8 @@ print(f"{'Medida':<20} {'Servidor A (ms)':<20} {'Servidor B (ms)':<20} {'Formula
 print(f"{'Media (x)':<20} {Media_Dados_Servidor_A_ms:<20} {Media_Dados_Servidor_B_ms:<20} {'Soma / n':<30} {msg_media}")
 print(f"{'Mediana (Md)':<20} {Mediana_Dados_Servidor_A_ms:<20} {Mediana_Dados_Servidor_B_ms:<20} {'Valor central ordenado':<30} {msg_mediana}")
 print(f"{'Moda (Mo)':<20} {Moda_Dados_Servidor_A_ms:<20} {Moda_Dados_Servidor_B_ms:<20} {'Valor mais frequente':<30} {msg_moda}")
-print("-" * 125)
 # ================================= Estatística Descritiva — Dispersão e Variabilidade =================================
+print("\n" + "="*125)
 print("Estatística Descritiva — Dispersão e Variabilidade")
 '''
 As medidas de dispersão são cruciais para avaliar a estabilidade do servidor. Um
@@ -253,7 +253,10 @@ CV_B = (Desvio_Padrao_B / Media_Dados_Servidor_B_ms) * 100
 int_variancia = f"B é ~{round(Variancia_B / Variancia_A, 1)}x mais disperso"
 int_desvio = f"B varia {round(Desvio_Padrao_B / Desvio_Padrao_A, 1)}x mais"
 int_amplitude = "B tem range muito maior"
-int_cv = "A é altamente estável" if CV_A < 10 else "Análise de estabilidade necessária"
+if CV_A < 10:
+    int_cv = "A é altamente estável"
+else:
+    int_cv = "Análise de estabilidade necessária"
 
 # Tabela de Dispersão
 print(f"\n{'Medida':<25} {'Servidor A':<20} {'Servidor B':<20} {'Formula':<30} {'Interpretacao'}")
@@ -261,9 +264,9 @@ print(f"{'Variancia (s2)':<25} {round(Variancia_A, 1):<20} {round(Variancia_B, 1
 print(f"{'Desvio Padrao (s)':<25} {round(Desvio_Padrao_A, 2):<20} {round(Desvio_Padrao_B, 2):<20} {'Raiz quadrada':<30} {int_desvio}")
 print(f"{'Amplitude (R)':<25} {Amplitude_A:<20} {Amplitude_B:<20} {'Max - Min':<30} {int_amplitude}")
 print(f"{'Coef. de Variacao (CV)':<25} {round(CV_A, 2):>5}%{'':<14} {round(CV_B, 2):>5}%{'':<14} {'(s / media) * 100':<30} {int_cv}")
-print("-" * 125)
 
 # ======================================= Boxplot Comparativo — Servidores A e B =======================================
+print("\n" + "="*125)
 print("Boxplot Comparativo — Servidores A e B")
 
 # Calcular estatísticas para boxplot
@@ -338,10 +341,8 @@ plt.tight_layout()
 plt.show()
 
 # ==================================== Interpretação dos Resultados — Itens a) a d) ====================================
-
-print("\n" + "="*80)
+print("\n" + "="*125)
 print("INTERPRETAÇÃO DOS RESULTADOS — ITENS A) A D)")
-print("="*80)
 
 # a) Qual servidor tem menor tempo médio de resposta?
 print("\n1. Menor Tempo Médio")
@@ -410,4 +411,65 @@ else:
     print("trade-off entre velocidade e estabilidade conforme o")
     print("critério de aceitação do seu ambiente de produção.")
 
-print("\n" + "="*80)
+# ==================================== Conclusão e Recomendação para Produção ====================================
+print("\n" + "="*125)
+print("CONCLUSÃO E RECOMENDAÇÃO PARA PRODUÇÃO")
+
+# Determinar o servidor recomendado
+if Media_Dados_Servidor_A_ms < Media_Dados_Servidor_B_ms and CV_A < CV_B and len(outliers_a) <= len(outliers_b):
+    servidor_recomendado = "A"
+    cv_recomendado = CV_A
+    cv_outro = CV_B
+    media_recomendado = Media_Dados_Servidor_A_ms
+    media_outro = Media_Dados_Servidor_B_ms
+    amplitude_recomendado = Amplitude_A
+    amplitude_outro = Amplitude_B
+    max_recomendado = max(Dados_Servidor_A_ms)
+    max_outro = max(Dados_Servidor_B_ms)
+    ratio_variabilidade = Desvio_Padrao_B / Desvio_Padrao_A
+else:
+    servidor_recomendado = "B"
+    cv_recomendado = CV_B
+    cv_outro = CV_A
+    media_recomendado = Media_Dados_Servidor_B_ms
+    media_outro = Media_Dados_Servidor_A_ms
+    amplitude_recomendado = Amplitude_B
+    amplitude_outro = Amplitude_A
+    max_recomendado = max(Dados_Servidor_B_ms)
+    max_outro = max(Dados_Servidor_A_ms)
+    ratio_variabilidade = Desvio_Padrao_A / Desvio_Padrao_B
+
+# Determinar o servidor não recomendado
+if servidor_recomendado == "A":
+    servidor_nao_recomendado = "B"
+else:
+    servidor_nao_recomendado = "A"
+
+print(f"\nEscolha: Servidor {servidor_recomendado}")
+print(f"Média de {round(media_recomendado, 1)} ms e CV de apenas {round(cv_recomendado, 2)}%")
+print("demonstram desempenho superior e")
+print("altamente estável. Ideal para ambientes")
+print("críticos com SLA rigoroso.")
+
+print(f"\nServidor {servidor_nao_recomendado}: Instável")
+print(f"CV de {round(cv_outro, 2)}% e amplitude de {amplitude_outro} ms indicam")
+print("comportamento imprevisível. Picos de até")
+print(f"{max_outro} ms prejudicam a experiência do usuário")
+print("final.")
+
+print("\nCritério-Chave: CV")
+print("Em simulação computacional, o Coeficiente")
+print("de Variação é o indicador mais importante")
+print("para estabilidade — mais relevante que a")
+print("média isolada.")
+
+print(f"{round(cv_recomendado, 2)}%")
+print(f"CV — Servidor {servidor_recomendado}")
+print("Baixíssima dispersão")
+print(f"\n{round(cv_outro, 2)}%")
+print(f"CV — Servidor {servidor_nao_recomendado}")
+print("Alta dispersão")
+print(f"\n{round(ratio_variabilidade, 1)}×")
+print("Fator de Variabilidade")
+print(f"{servidor_nao_recomendado} varia {round(ratio_variabilidade, 1)}× mais que {servidor_recomendado}")
+
