@@ -18,14 +18,13 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import StandardScaler
 # ==============================================================
-# Análise de Desempenho de Servidores Web
+# Resoluções dos Exercícios 1 — Análise de Desempenho de Servidores Web
 '''
-Nesta apresentação, exploramos a aplicação de estatística
-descritiva para comparar o desempenho de dois servidores
-web (A e B), interpretando métricas de tendência central e
-dispersão, além de visualizações como boxplot. O objetivo é
-desenvolver raciocínio analítico para tomada de decisão em
-ambientes computacionais reais.
+Nesta apresentação, exploramos a aplicação de estatística descritiva para 
+comparar o desempenho de dois servidores web (A e B), interpretando métricas de 
+tendência central e dispersão, além de visualizações como boxplot. O objetivo é
+desenvolver raciocínio analítico para tomada de decisão emambientes 
+computacionais reais.
 '''
 # Agenda
 '''
