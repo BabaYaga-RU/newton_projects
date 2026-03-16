@@ -104,15 +104,15 @@ while (True):
         break
 
 # Médiana A
-Dados_Servidor_A_ms.sort()
+dados_ordenados_a = sorted(Dados_Servidor_A_ms)
 mediana_par = amostra % 2 == 0
 Mediana_Dados_Servidor_A_ms = 0
 if (mediana_par == True):
     indice_1 = int((amostra / 2) - 1)
     indice_2 = int(amostra / 2)
-    Mediana_Dados_Servidor_A_ms = (Dados_Servidor_A_ms[indice_1] + Dados_Servidor_A_ms[indice_2]) / 2
+    Mediana_Dados_Servidor_A_ms = (dados_ordenados_a[indice_1] + dados_ordenados_a[indice_2]) / 2
 else:
-    Mediana_Dados_Servidor_A_ms = Dados_Servidor_A_ms[int(amostra / 2)]
+    Mediana_Dados_Servidor_A_ms = dados_ordenados_a[int(amostra / 2)]
 
 # Moda A
 Moda_Dados_Servidor_A_ms = ""
@@ -145,14 +145,14 @@ while (True):
         break
 
 # Médiana B
-Dados_Servidor_B_ms.sort()
+dados_ordenados_b = sorted(Dados_Servidor_B_ms)
 Mediana_Dados_Servidor_B_ms = 0
 if (mediana_par == True):
     indice_1 = int((amostra / 2) - 1)
     indice_2 = int(amostra / 2)
-    Mediana_Dados_Servidor_B_ms = (Dados_Servidor_B_ms[indice_1] + Dados_Servidor_B_ms[indice_2]) / 2
+    Mediana_Dados_Servidor_B_ms = (dados_ordenados_b[indice_1] + dados_ordenados_b[indice_2]) / 2
 else:
-    Mediana_Dados_Servidor_B_ms = Dados_Servidor_B_ms[int(amostra / 2)]
+    Mediana_Dados_Servidor_B_ms = dados_ordenados_b[int(amostra / 2)]
 
 # Moda B
 Moda_Dados_Servidor_B_ms = ""
