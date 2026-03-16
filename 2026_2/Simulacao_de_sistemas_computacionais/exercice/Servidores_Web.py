@@ -97,52 +97,50 @@ indice_media = 0
 Media_Dados_Servidor_A_ms = 0
 while (True):
     Media_Dados_Servidor_A_ms = Dados_Servidor_A_ms[indice_media] + Media_Dados_Servidor_A_ms
-    indice_media +=1
-    if indice_media == 9:
+    indice_media += 1
+    if indice_media == amostra:
         indice_media = 0
         Media_Dados_Servidor_A_ms = Media_Dados_Servidor_A_ms / amostra
         break
 
 # Médiana A
 Dados_Servidor_A_ms.sort()
-mediana_par = amostra %2 == 0
+mediana_par = amostra % 2 == 0
 Mediana_Dados_Servidor_A_ms = 0
 if (mediana_par == True):
-    indice_1 = int(( amostra / 2) - 1)
-    indice_2 = int( amostra / 2)
-    Mediana_Dados_Servidor_A_ms = ( Dados_Servidor_A_ms[indice_1] + Dados_Servidor_A_ms[indice_2] ) / 2
+    indice_1 = int((amostra / 2) - 1)
+    indice_2 = int(amostra / 2)
+    Mediana_Dados_Servidor_A_ms = (Dados_Servidor_A_ms[indice_1] + Dados_Servidor_A_ms[indice_2]) / 2
 else:
-    Mediana_Dados_Servidor_A_ms = Dados_Servidor_A_ms[int((amostra / 2) +1)]
+    Mediana_Dados_Servidor_A_ms = Dados_Servidor_A_ms[int(amostra / 2)]
 
 # Moda A
-Moda_Dados_Servidor_A_ms = 0
-dados = [120, 135, 128, 142, 119, 130, 125, 138, 122, 131]
-
-frequencia = {}
-for item in dados:
-    if item in frequencia:
-        frequencia[item] += 1
+Moda_Dados_Servidor_A_ms = ""
+frequencia_moda_A = {}
+for dado in Dados_Servidor_A_ms:
+    if dado in frequencia_moda_A:
+        frequencia_moda_A[dado] += 1
     else:
-        frequencia[item] = 1
+        frequencia_moda_A[dado] = 1
+maior_frequencia_A = max(frequencia_moda_A.values())
+moda_A = []
+for chave in frequencia_moda_A:
+    repetido = frequencia_moda_A[chave]
+    if repetido == maior_frequencia_A:
+        moda_A.append(chave)
 
-# Encontrar o valor com a maior frequência
-maior_frequencia = max(frequencia.values())
-
-# Identificar qual(is) valor(es) atingiram essa frequência
-moda = [k for k, v in frequencia.items() if v == maior_frequencia]
-
-if maior_frequencia == 1:
-    print("O conjunto é amodal (não há moda).")
+if maior_frequencia_A == 1:
+    Moda_Dados_Servidor_A_ms = "Amodal"
 else:
-    print(f"Moda: {moda}")
-
+    Moda_Dados_Servidor_A_ms = str(moda_A)
 
 # Média B
 Media_Dados_Servidor_B_ms = 0
 while (True):
     Media_Dados_Servidor_B_ms = Dados_Servidor_B_ms[indice_media] + Media_Dados_Servidor_B_ms
-    indice_media +=1
-    if indice_media == 9:
+    indice_media += 1
+    if indice_media == amostra:
+        indice_media = 0
         Media_Dados_Servidor_B_ms = Media_Dados_Servidor_B_ms / amostra
         break
 
@@ -150,28 +148,67 @@ while (True):
 Dados_Servidor_B_ms.sort()
 Mediana_Dados_Servidor_B_ms = 0
 if (mediana_par == True):
-    indice_1 = int(( amostra / 2) - 1)
-    indice_2 = int( amostra / 2)
-    Mediana_Dados_Servidor_B_ms = ( Dados_Servidor_B_ms[indice_1] + Dados_Servidor_B_ms[indice_2] ) / 2
+    indice_1 = int((amostra / 2) - 1)
+    indice_2 = int(amostra / 2)
+    Mediana_Dados_Servidor_B_ms = (Dados_Servidor_B_ms[indice_1] + Dados_Servidor_B_ms[indice_2]) / 2
 else:
-    Mediana_Dados_Servidor_B_ms = Dados_Servidor_B_ms[int((amostra / 2) +1)]
-
+    Mediana_Dados_Servidor_B_ms = Dados_Servidor_B_ms[int(amostra / 2)]
 
 # Moda B
-Moda_Dados_Servidor_B_ms = 0
+Moda_Dados_Servidor_B_ms = ""
+frequencia_moda_B = {}
+for dado in Dados_Servidor_B_ms:
+    if dado in frequencia_moda_B:
+        frequencia_moda_B[dado] += 1
+    else:
+        frequencia_moda_B[dado] = 1
+maior_frequencia_B = max(frequencia_moda_B.values())
+moda_B = []
+for chave in frequencia_moda_B:
+    repetido = frequencia_moda_B[chave]
+    if repetido == maior_frequencia_B:
+        moda_B.append(chave)
+
+if maior_frequencia_B == 1:
+    Moda_Dados_Servidor_B_ms = "Amodal"
+else:
+    Moda_Dados_Servidor_B_ms = str(moda_B)
 
 #Mensagens
 msg_media = ""
-if Media_Dados_Servidor_A_ms < Media_Dados_Servidor_B_ms:
-    msg_media = 'A é ' + str(Media_Dados_Servidor_B_ms - Media_Dados_Servidor_A_ms) + 'ms mais rápido'
-else:
-    msg_media = 'B é ' + str(Media_Dados_Servidor_A_ms - Media_Dados_Servidor_B_ms) + 'ms mais rápido'
-
 msg_mediana = ""
-
+if Media_Dados_Servidor_A_ms < Media_Dados_Servidor_B_ms:
+    msg_media = 'A é ' + str(round(Media_Dados_Servidor_B_ms - Media_Dados_Servidor_A_ms, 2)) + 'ms mais rápido'
+    if Mediana_Dados_Servidor_A_ms < Mediana_Dados_Servidor_B_ms:
+        msg_mediana = "Confirma vantagem do A"
+    else:
+        msg_mediana = "Vantagem do B"
+else:
+    msg_media = 'B é ' + str(round(Media_Dados_Servidor_A_ms - Media_Dados_Servidor_B_ms, 2)) + 'ms mais rápido'
+    if Mediana_Dados_Servidor_A_ms < Mediana_Dados_Servidor_B_ms:
+        msg_mediana = "Vantagem do A"
+    else:
+        msg_mediana = "Confirma vantagem do B"
 
 msg_moda = ""
+validador_a = (Moda_Dados_Servidor_A_ms == "Amodal")
+validador_b = (Moda_Dados_Servidor_B_ms == "Amodal")
+if validador_a and validador_b:
+    msg_moda = "Sem repetição nos dados"
+elif not validador_a and validador_b:
+    msg_moda = "Servidor A é mais previsível por possuir uma moda."
+elif validador_a and not validador_b:
+    msg_moda = "Servidor B é mais previsível por possuir uma moda."
+else:
+    if moda_A[0] < moda_B[0]:
+        msg_moda = "Servidor A ganha por ter o tempo frequente mais baixo."
+    elif moda_B[0] < moda_A[0]:
+        msg_moda = "Servidor B ganha por ter o tempo frequente mais baixo."
+    else:
+        msg_moda = "Modas idênticas, empate técnico nesta métrica."
 
-
-print("Medida \t \t Servidor A (ms) \t Servidor B (ms) \t Fórmula  \t Observação")
+print(f"{'Medida':<20} {'Servidor A (ms)':<20} {'Servidor B (ms)':<20} {'Fórmula':<30} {'Observação'}")
+print(f"{'Média (x̄ )':<20} {Media_Dados_Servidor_A_ms:<20} {Media_Dados_Servidor_B_ms:<20} {'Σxᵢ / n':<30} {msg_media}")
+print(f"{'Mediana (Md)':<20} {Mediana_Dados_Servidor_A_ms:<20} {Mediana_Dados_Servidor_B_ms:<20} {'Valor central ordenado':<30} {msg_mediana}")
+print(f"{'Moda (Mo)':<20} {Moda_Dados_Servidor_A_ms:<20} {Moda_Dados_Servidor_B_ms:<20} {'Valor mais frequente':<30} {msg_moda}")
 
