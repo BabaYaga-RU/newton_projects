@@ -5,6 +5,13 @@
 
     </head>
     <body>
+        <fieldset>
+            <legend>Cadastro de aluno</legend>
+            <datalist id="listanome">
+                <option value="John"></option>
+                <option value="Maria"></option>
+            </datalist>
+        </fieldset>
         <!-- get - dado na url -->
         <form action="resposta.php" method="get">
             Nome:
@@ -43,8 +50,11 @@
                 <option value="3">Bacharelado</option>
             </select>
         </br>
-            Desjea aceitar os termos?
+            Deseja aceitar os termos?
             <input type="checkbox" name="termo" checked/>
         </form>
+    </br>
+        <input type="reset" value="Reset">
+        <input type="button" value="Don't click here" onclick='alert("Dont click OK")'>
     </body>
 </html>
