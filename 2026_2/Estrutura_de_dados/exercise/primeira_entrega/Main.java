@@ -1,11 +1,12 @@
 // Prazo: 22/03/2026
 
 import java.util.Random;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int indice = 1;
-        System.out.println("====================== Exercicio " + indice + " ======================");
+        int Exercicio = 1;
+        System.out.println("====================== Exercicio " + Exercicio + " ======================");
         /*
         1. Escreva um programa que leia dois vetores inteiros com dez posições cada. 
         A partir desses vetores, carregue um terceiro vetor onde o valor de cada elemento 
@@ -17,11 +18,11 @@ public class Main {
             double[] vetor_tres = new double[10];
             for (int i = 0; i < vetor_um.length; i ++){
                 vetor_tres[i] = (vetor_um[i] + vetor_dois[i]) / 2;
-                System.out.println(vetor_tres[i]);
             }
+            System.out.println(Arrays.toString(vetor_tres));
         }catch(Exception e){}
-        indice ++;
-        System.out.println("====================== Exercicio " + indice + " ======================");
+        Exercicio ++;
+        System.out.println("====================== Exercicio " + Exercicio + " ======================");
         /*
         2. Escreva um programa que carregue um vetor inteiro de cem posições com números 
         aleatórios entre 0 e 100. Percorrendo o vetor criado apenas uma vez, imprima a 
@@ -32,10 +33,33 @@ public class Main {
         vetor original e assim em diante.
         */
         try{
-
+            Random random = new Random();
+            int[] vetor = new int[100];
+            for (int i = 0; i < 100; i ++){
+                vetor[i] = random.nextInt(100);
+            }
+            int menor_valor = 101;
+            int menor_indice = 0;
+            int numeros_armazenados = 0;
+            int[] segundo_vetor = new int[50];
+            int indice = 99;
+            for (int i = 0; i < 100; i ++){
+                if (vetor[i] < menor_valor){
+                    menor_valor = vetor[i];
+                    menor_indice = i;
+                }
+                numeros_armazenados += vetor[i];
+                if (i < 50){
+                    segundo_vetor[i] = vetor[i] + vetor[indice];
+                }
+            }
+            System.out.println("Vetor gerado: " + Arrays.toString(vetor));
+            System.out.println("Menor valor no indice: " + menor_indice + " (Valor: " + menor_valor + ")");
+            System.out.println("Somatoria dos numeros armazenados: " + numeros_armazenados);
+            System.out.println("Novo Vetor: " + Arrays.toString(segundo_vetor));
         }catch(Exception e){}
-        indice ++;
-        System.out.println("====================== Exercicio " + indice + " ======================");
+        Exercicio ++;
+        System.out.println("====================== Exercicio " + Exercicio + " ======================");
         /*
         3. Escreva um programa que carregue dois vetores inteiros com 5 posições, sendo 
         um com números pares e o outro com números ímpares. O usuário pode digitar os 
@@ -45,8 +69,8 @@ public class Main {
         try{
 
         }catch(Exception e){}
-        indice ++;
-        System.out.println("====================== Exercicio " + indice + " ======================");
+        Exercicio ++;
+        System.out.println("====================== Exercicio " + Exercicio + " ======================");
         /*
         4. Escreva um programa que ordene um vetor de tamanho arbitrário preenchido com 
         números aleatórios e execute a pesquisa por um valor passado como parâmetro 
@@ -55,8 +79,8 @@ public class Main {
         try{
 
         }catch(Exception e){}
-        indice ++;
-        System.out.println("====================== Exercicio " + indice + " ======================");
+        Exercicio ++;
+        System.out.println("====================== Exercicio " + Exercicio + " ======================");
         /*
         5. Implemente dois algoritmos que ordenem os elementos de um vetor em ordem 
         crescente e compare o número de trocas que eles efetuam durante a ordenação de:
