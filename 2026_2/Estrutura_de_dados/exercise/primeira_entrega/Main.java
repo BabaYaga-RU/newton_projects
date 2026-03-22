@@ -2,8 +2,12 @@
 
 import java.util.Random;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
+    public static boolean ehPar(int dado) {
+        return dado % 2 == 0;
+    }
     public static void main(String[] args) {
         int Exercicio = 1;
         System.out.println("====================== Exercicio " + Exercicio + " ======================");
@@ -67,7 +71,37 @@ public class Main {
         na ordem em que foram informados pelo usuário.
         */
         try{
-
+            Scanner scn = new Scanner(System.in);
+            int[] impar = new int[5];
+            int[] par = new int[5];
+            int entrada = 0;
+            int indicePar = 0;
+            int indiceImpar = 0;
+            while(true){
+                if (indicePar == 5 & indiceImpar == 5){
+                    break;
+                }
+                System.out.print("Insira um numero inteiro: ");
+                entrada = scn.nextInt();
+                if (ehPar(entrada) == true){
+                    if (indicePar == 5){
+                        System.out.println("Vetor Par completo");
+                    }else {
+                        par[indicePar] = entrada;
+                        indicePar ++;
+                    }
+                }else{
+                    if (indiceImpar == 5){
+                        System.out.println("Vetor Impar completo");
+                    }else {
+                        impar[indiceImpar] = entrada;
+                        indiceImpar ++;
+                    }
+                }
+            }
+            System.out.println("Vetor impar: " + Arrays.toString(impar));
+            System.out.println("Vetor par: " + Arrays.toString(par));
+            scn.close();
         }catch(Exception e){}
         Exercicio ++;
         System.out.println("====================== Exercicio " + Exercicio + " ======================");
