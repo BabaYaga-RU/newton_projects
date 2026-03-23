@@ -8,7 +8,29 @@ Muito usado em:
 - Call centers (atendentes)
 - Sistemas computacionais (processos esperando CPU)
 
-O "M/M/1" significa:
+=== NOTAÇÃO DE KENDALL ===
+A notação padronizada para descrever sistemas de filas tem o formato: A/B/c[/K/m/Z]
+
+Onde:
+- A: Distribuição dos tempos entre chegadas
+- B: Distribuição dos tempos de serviço  
+- c: Número de servidores
+- K: Capacidade máxima do sistema (opcional)
+- m: Tamanho da população (opcional)
+- Z: Disciplina da fila (opcional, padrão FIFO)
+
+Símbolos comuns:
+- M: Distribuição Markoviana (Exponencial) - memória curta
+- D: Distribuição Determinística (tempos constantes)
+- G: Distribuição Geral (qualquer distribuição)
+- Ek: Distribuição Erlang-k (k fases exponenciais)
+
+Exemplos:
+- M/M/1: Chegadas exponenciais, serviços exponenciais, 1 servidor
+- M/D/3: Chegadas exponenciais, serviços determinísticos, 3 servidores
+- M/G/2/10: Chegadas exponenciais, serviços gerais, 2 servidores, capacidade máxima 10
+
+O "M/M/1" que simulamos significa:
 - Primeiro M: Chegada de clientes segue distribuição Markoviana (exponencial)
 - Segundo M: Tempo de serviço segue distribuição Markoviana (exponencial)  
 - 1: Tem apenas 1 servidor (caixa, atendente, etc.)
