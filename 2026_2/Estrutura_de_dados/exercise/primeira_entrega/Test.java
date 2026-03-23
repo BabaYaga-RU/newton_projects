@@ -2,6 +2,14 @@ import java.util.Random;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/*
+5. Implemente dois algoritmos que ordenem os elementos de um vetor em ordem 
+crescente e compare o número de trocas que eles efetuam durante a ordenação de:
+
+a) um vetor criado com os números de 1 até 100 aleatoriamente distribuídos.
+b) um vetor criado com os números de 1 até 100 ordenados em ordem decrescente
+*/
+
 public class Test {
 
     public static void ordenar(int[] vetor){
@@ -57,13 +65,6 @@ public class Test {
                 indice ++;
             }
             System.out.println("Segundo vetor: " + Arrays.toString(vetor_dois));
-            /*
-            5. Implemente dois algoritmos que ordenem os elementos de um vetor em ordem 
-            crescente e compare o número de trocas que eles efetuam durante a ordenação de:
-
-            a) um vetor criado com os números de 1 até 100 aleatoriamente distribuídos.
-            b) um vetor criado com os números de 1 até 100 ordenados em ordem decrescente
-            */
             System.out.println("Segundo vetor: " + Arrays.toString(vetor_dois));
             System.out.println("a) um vetor criado com os números de 1 até 100 aleatoriamente distribuídos.");
             ordenar(vetor_um);
