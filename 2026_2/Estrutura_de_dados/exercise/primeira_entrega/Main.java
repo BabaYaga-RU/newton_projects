@@ -8,6 +8,26 @@ public class Main {
     public static boolean ehPar(int dado) {
         return dado % 2 == 0;
     }
+    public static void ordenar(int[] vetor){
+        int contagem = 0;
+        while(true){
+            boolean pronto = true;
+            for (int i = 0; i < 99; i++){
+                if (vetor[i] > vetor[i + 1]){
+                    int save = vetor[i] ;
+                    vetor[i] = vetor[i + 1];
+                    vetor[i + 1] = save;
+                    pronto = false;
+                    contagem ++;
+                }
+            }
+            if (pronto == true){
+                break;
+            }
+        }
+        System.out.println("Vetor ordenado: " + Arrays.toString(vetor));
+        System.out.println("Quantidade de movimentos: " + contagem);
+    }
     public static void main(String[] args) {
         int Exercicio = 1;
         System.out.println("====================== Exercicio " + Exercicio + " ======================");
@@ -184,8 +204,10 @@ public class Main {
                 indice ++;
             }
             System.out.println("Segundo vetor: " + Arrays.toString(vetor_dois));
-
-            
+            System.out.println("a) um vetor criado com os números de 1 até 100 aleatoriamente distribuídos.");
+            ordenar(vetor_um);
+            System.out.println("b) um vetor criado com os números de 1 até 100 ordenados em ordem decrescente");
+            ordenar(vetor_dois);
             
         }catch(Exception e){}
     }
