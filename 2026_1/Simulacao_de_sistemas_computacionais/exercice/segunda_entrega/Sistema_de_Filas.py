@@ -134,7 +134,7 @@ def simular_fila_mm1(taxa_de_chegada, taxa_atendimento, tempo_simulacao):
     while tempo_simulado < tempo_simulacao:
         # Determina qual sera o proximo evento
         if servidor_ocupado:
-            # Se servidor esta ocupado, proximo evento pode ser chegada OU saída
+            # Se servidor esta ocupado, proximo evento pode ser chegada OU saida
             tempo_evento = min(tempo_proximo_cliente, tempo_liberacao_servidor)
         else:
             # Se servidor esta livre, so pode acontecer chegada
@@ -164,7 +164,7 @@ def simular_fila_mm1(taxa_de_chegada, taxa_atendimento, tempo_simulacao):
                     servidor_ocupado = True
                     tempo_liberacao_servidor = tempo_simulado + tempo_servico
 
-        # Processa a liberacao do servidor (saída de cliente)
+        # Processa a liberacao do servidor (saida de cliente)
         elif tempo_evento == tempo_liberacao_servidor and servidor_ocupado:
             # Cliente terminou o atendimento
             if 'tempo_chegada_cliente' in locals() and tempo_chegada_cliente is not None:
