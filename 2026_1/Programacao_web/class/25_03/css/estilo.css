@@ -17,8 +17,8 @@ p#identificacao {
     border-width: 1px;
 }
 #bolinha {
-    color: red;
-    text-align: center;
+    color: red !important;
+    text-align: center !important;
     border-style: dotted;
     border-width: 1px;
     font-size: x-large;
