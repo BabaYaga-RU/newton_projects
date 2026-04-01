@@ -29,11 +29,12 @@ informar, caso o elemento exista, a posição na qual ele está armazenado.
  */
 public class Nao_foi_feito_por_ia_confia {
 
-    // Atributos da lista baseada em array:
+    // =========================== ATRIBUTOS ===========================
     int[] elementos;   // o array que guarda os números
     int tamanho;       // quantos elementos têm (próxima posição vazia)
     int capacidade;    // tamanho máximo do array atual
 
+    // =========================== CONSTRUTOR ===========================
     // 1. Construtor: cria array com capacidade inicial de 10
     public Nao_foi_feito_por_ia_confia() {
         capacidade = 10;
@@ -41,15 +42,31 @@ public class Nao_foi_feito_por_ia_confia {
         tamanho = 0;
     }
 
+    // =========================== MÉTODOS AUXILIARES ===========================
+    // Redimensionar: quando array enche, dobra a capacidade
+    // Cria novo array maior e copia os elementos
+    void redimensionar() {
+        capacidade *= 2;  // dobra capacidade
+        int[] novoarray = new int[capacidade];
+        // Copia elementos do array antigo para o novo
+        for (int i = 0; i < tamanho; i++) {
+            novoarray[i] = elementos[i];
+        }
+        elementos = novoarray;  // troca referência
+    }
+
     // Cria lista vazia (reseta o tamanho para 0)
     public void criarListaVazia() {
         tamanho = 0;
     }
 
+    // =========================== MÉTODOS DE INSERÇÃO ===========================
     // 2. Inserir no INÍCIO
     // Abre espaço na posição 0 movendo todos os elementos para a direita
     public void inserirNoInicio(int elemento) {
-        if (tamanho == capacidade) redimensionar();  // se cheio, aumenta array
+        if (tamanho == capacidade) {  // se cheio, aumenta array
+            redimensionar();
+        }
         // Move todos os elementos uma posição para a direita
         for (int i = tamanho; i > 0; i--) {
             elementos[i] = elementos[i - 1];
@@ -61,7 +78,9 @@ public class Nao_foi_feito_por_ia_confia {
     // 3. Inserir no FIM
     // Coloca elemento na próxima posição disponível (tamanho)
     public void inserirNoFim(int elemento) {
-        if (tamanho == capacidade) redimensionar();  // se cheio, aumenta array
+        if (tamanho == capacidade) {  // se cheio, aumenta array
+            redimensionar();
+        }
         elementos[tamanho] = elemento;  // coloca na posição 'tamanho'
         tamanho++;
     }
@@ -69,9 +88,12 @@ public class Nao_foi_feito_por_ia_confia {
     // 4. Inserir em POSIÇÃO específica
     // Move elementos da posição em diante para a direita, abre espaço
     public void inserirEmPosicao(int posicao, int elemento) {
-        if (posicao < 0 || posicao > tamanho)
+        if (posicao < 0 || posicao > tamanho) {
             throw new IndexOutOfBoundsException("Posição inválida: " + posicao);
-        if (tamanho == capacidade) redimensionar();
+        }
+        if (tamanho == capacidade) {
+            redimensionar();
+        }
 
         // Move elementos da posição em diante para a direita
         for (int i = tamanho; i > posicao; i--) {
@@ -81,10 +103,13 @@ public class Nao_foi_feito_por_ia_confia {
         tamanho++;
     }
 
+    // =========================== MÉTODOS DE REMOÇÃO ===========================
     // 5. Remover do INÍCIO
     // Pega elemento da posição 0, move todos para a esquerda
     public int removerDoInicio() {
-        if (tamanho == 0) throw new IllegalStateException("Lista vazia");
+        if (tamanho == 0) {
+            throw new IllegalStateException("Lista vazia");
+        }
         int elemento = elementos[0];  // guarda valor que será removido
         // Move todos os elementos uma posição para a esquerda
         for (int i = 0; i < tamanho - 1; i++) {
@@ -97,7 +122,9 @@ public class Nao_foi_feito_por_ia_confia {
     // 6. Remover do FIM
     // Simplesmente diminui o tamanho (última posição vira "vazia")
     public int removerDoFim() {
-        if (tamanho == 0) throw new IllegalStateException("Lista vazia");
+        if (tamanho == 0) {
+            throw new IllegalStateException("Lista vazia");
+        }
         tamanho--;  // diminui tamanho
         return elementos[tamanho];  // retorna o último elemento
     }
@@ -105,8 +132,9 @@ public class Nao_foi_feito_por_ia_confia {
     // 7. Remover de POSIÇÃO específica
     // Move elementos da posição em diante para a esquerda, fechando o buraco
     public int removerEmPosicao(int posicao) {
-        if (posicao < 0 || posicao >= tamanho)
+        if (posicao < 0 || posicao >= tamanho) {
             throw new IndexOutOfBoundsException("Posição inválida: " + posicao);
+        }
         int elemento = elementos[posicao];  // guarda valor que será removido
         // Move elementos da posição em diante para a esquerda
         for (int i = posicao; i < tamanho - 1; i++) {
@@ -128,44 +156,37 @@ public class Nao_foi_feito_por_ia_confia {
         return false;  // não achou
     }
 
-    // 9. Exibir lista
-    // Mostra: [1, 2, 3]
-    public void exibirLista() {
-        System.out.print("[");
-        for (int i = 0; i < tamanho; i++) {
-            System.out.print(elementos[i]);
-            if (i < tamanho - 1) System.out.print(", ");
-        }
-        System.out.println("]");
+    // =========================== MÉTODOS DE CONSULTA ===========================
+    // 11. Retornar tamanho
+    public int tamanho() {
+        return tamanho;
     }
 
     // 10. Pesquisar elemento
     // Procura no array, retorna a POSIÇÃO ou -1 se não achou
     public int pesquisarElemento(int elemento) {
         for (int i = 0; i < tamanho; i++) {
-            if (elementos[i] == elemento) return i;  // achou, retorna posição
+            if (elementos[i] == elemento) {  // achou, retorna posição
+                return i;
+            }
         }
         return -1;  // não achou
     }
 
-    // 11. Retornar tamanho
-    public int tamanho() {
-        return tamanho;
-    }
-
-    // Redimensionar: quando array enche, dobra a capacidade
-    // Cria novo array maior e copia os elementos
-    void redimensionar() {
-        capacidade *= 2;  // dobra capacidade
-        int[] novoarray = new int[capacidade];
-        // Copia elementos do array antigo para o novo
+    // 9. Exibir lista
+    // Mostra: [1, 2, 3]
+    public void exibirLista() {
+        System.out.print("[");
         for (int i = 0; i < tamanho; i++) {
-            novoarray[i] = elementos[i];
+            System.out.print(elementos[i]);
+            if (i < tamanho - 1) {
+                System.out.print(", ");
+            }
         }
-        elementos = novoarray;  // troca referência
+        System.out.println("]");
     }
 
-// ======================= Método main para testar a implementação =======================
+    // =========================== MÉTODO PRINCIPAL ===========================
     public static void main(String[] args) {
         System.out.println("=== Testando Lista Baseada em Array ===\n");
         
