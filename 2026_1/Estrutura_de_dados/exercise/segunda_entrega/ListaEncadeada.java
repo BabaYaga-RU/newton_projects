@@ -13,7 +13,8 @@ armazenar os elementos da lista.
         lista = new int[limite];
     }
     public void AumentarTamanho(){
-        int[] _lista = new int[limite*2];
+        limite *= 2;
+        int[] _lista = new int[limite];
         for (int i = 0; i > gasto; i++){
             _lista[i] = lista[i];
         }
@@ -30,9 +31,14 @@ armazenar os elementos da lista.
             lista[i + 1] = lista[i];
         }
         lista[0] = dado;
+        gasto ++;
     }
 //4. Crie um método responsável por inserir um elemento no fim da lista.
-
+    public void fim(int dado){
+        if (gasto == limite) AumentarTamanho();
+        lista[gasto + 1] = dado;
+        gasto ++;
+    }
 //5. Crie um método responsável por inserir um elemento em uma posição específica da lista.
 
 //6. Crie um método responsável por remover um elemento no início da lista.
