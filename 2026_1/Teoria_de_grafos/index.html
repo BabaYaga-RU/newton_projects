@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo - Teoria de Grafos</title>
+    <style>
+        :root {
+            --bg: #08111f;
+            --panel: rgba(8, 17, 31, 0.94);
+            --card: #11243f;
+            --text: #ebf3ff;
+            --accent: #60a5fa;
+            --accent2: #34d399;
+            --warn: #fbbf24;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: radial-gradient(circle at top, #12315f, #08111f 60%);
+            color: var(--text);
+            line-height: 1.65;
+        }
+        .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
+        .hero, section {
+            background: var(--panel);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+        h1, h2, h3 { margin-top: 0; }
+        h1 { color: #93c5fd; }
+        h2 { color: #bfdbfe; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+        .card {
+            background: var(--card);
+            padding: 14px;
+            border-radius: 14px;
+            border-left: 4px solid var(--accent);
+        }
+        .pill {
+            display: inline-block;
+            padding: 6px 10px;
+            margin: 5px 6px 0 0;
+            border-radius: 999px;
+            border: 1px solid #33537f;
+            background: #0b1630;
+        }
+        .note, .alert {
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .note { background: rgba(52, 211, 153, 0.10); border-left: 4px solid var(--accent2); }
+        .alert { background: rgba(251, 191, 36, 0.10); border-left: 4px solid var(--warn); }
+        a { color: #7dd3fc; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #29456d; padding: 10px; text-align: left; vertical-align: top; }
+        th { background: #0b1630; }
+        pre { background: #07101f; color: #dbeafe; padding: 12px; border-radius: 10px; white-space: pre-wrap; }
+        @media (max-width: 700px) {
+            .container { padding: 12px; }
+            h1 { font-size: 1.55rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Guia Completo de Teoria de Grafos</h1>
+            <p>Resumo ampliado para revisão de prova, tomando como base os PDFs da pasta e reforçando os conceitos que normalmente aparecem em matemática discreta e teoria de grafos.</p>
+            <span class="pill">Königsberg</span>
+            <span class="pill">Vértices</span>
+            <span class="pill">Arestas</span>
+            <span class="pill">Graus</span>
+            <span class="pill">Euler</span>
+            <span class="pill">Indução</span>
+            <span class="pill">Conjectura</span>
+        </div>
+
+        <section>
+            <h2>Materiais-base da pasta</h2>
+            <p>
+                <a href="Aula_01_Teoria_de_Grafos.pdf" target="_blank">Aula 01</a> •
+                <a href="Aula_02_Teoria_de_Grafos.pdf" target="_blank">Aula 02</a>
+            </p>
+            <div class="note">Os PDFs mostraram especialmente: origem histórica da teoria de grafos com Euler e uma base de raciocínio matemático com conjecturas, contraexemplo e fórmulas fechadas.</div>
+        </section>
+
+        <section>
+            <h2>1) Origem histórica: pontes de Königsberg</h2>
+            <p>O problema das pontes de Königsberg perguntava se era possível atravessar todas as pontes da cidade sem repetir nenhuma. Euler mostrou que não. Essa análise transformou um problema real em uma representação abstrata com vértices e arestas, inaugurando a teoria de grafos.</p>
+            <div class="alert">Essa história é muito importante porque costuma ser usada para explicar <strong>o nascimento da área</strong> e o raciocínio sobre caminhos e graus dos vértices.</div>
+        </section>
+
+        <section>
+            <h2>2) Conceitos fundamentais</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Grafo</h3>
+                    <p>Estrutura formada por um conjunto de vértices e um conjunto de arestas.</p>
+                </div>
+                <div class="card">
+                    <h3>Vértice</h3>
+                    <p>Ponto do grafo. Pode representar pessoas, cidades, computadores, tarefas ou lugares.</p>
+                </div>
+                <div class="card">
+                    <h3>Aresta</h3>
+                    <p>Ligação entre dois vértices. Mostra uma relação ou caminho.</p>
+                </div>
+                <div class="card">
+                    <h3>Grau do vértice</h3>
+                    <p>Quantidade de arestas incidentes naquele vértice.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3) Conceitos que você deve saber definir</h2>
+            <table>
+                <tr>
+                    <th>Conceito</th>
+                    <th>Definição curta</th>
+                </tr>
+                <tr>
+                    <td>Adjacência</td>
+                    <td>Dois vértices são adjacentes quando existe aresta ligando ambos.</td>
+                </tr>
+                <tr>
+                    <td>Caminho</td>
+                    <td>Sequência de vértices ligados por arestas.</td>
+                </tr>
+                <tr>
+                    <td>Ciclo</td>
+                    <td>Caminho que começa e termina no mesmo vértice.</td>
+                </tr>
+                <tr>
+                    <td>Subgrafo</td>
+                    <td>Parte de um grafo maior, mantendo alguns vértices e arestas.</td>
+                </tr>
+                <tr>
+                    <td>Grafo conectado</td>
+                    <td>Existe caminho entre quaisquer dois vértices.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>4) Tipos de grafos</h2>
+            <ul>
+                <li><strong>Simples:</strong> sem laços e sem arestas múltiplas.</li>
+                <li><strong>Direcionado:</strong> a aresta possui sentido.</li>
+                <li><strong>Não direcionado:</strong> a ligação vale nos dois sentidos.</li>
+                <li><strong>Ponderado:</strong> arestas têm peso, custo ou distância.</li>
+                <li><strong>Completo:</strong> todos os vértices estão ligados entre si.</li>
+                <li><strong>Bipartido:</strong> vértices separados em dois conjuntos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5) Grafo euleriano e caminho euleriano</h2>
+            <table>
+                <tr>
+                    <th>Termo</th>
+                    <th>Significado</th>
+                </tr>
+                <tr>
+                    <td>Caminho euleriano</td>
+                    <td>Percorre cada aresta exatamente uma vez.</td>
+                </tr>
+                <tr>
+                    <td>Circuito euleriano</td>
+                    <td>Percorre cada aresta uma vez e volta ao ponto inicial.</td>
+                </tr>
+            </table>
+            <div class="alert">
+                Regra para decorar: em um grafo conectado, se todos os vértices têm grau par, existe circuito euleriano. Se exatamente dois vértices têm grau ímpar, pode existir apenas caminho euleriano.
+            </div>
+        </section>
+
+        <section>
+            <h2>6) Representações de grafos</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Matriz de adjacência</h3>
+                    <p>Usa uma tabela para registrar se há ligação entre dois vértices. É fácil de consultar, mas pode gastar mais memória.</p>
+                </div>
+                <div class="card">
+                    <h3>Lista de adjacência</h3>
+                    <p>Para cada vértice, guarda a lista de vizinhos. Costuma ser mais econômica quando o grafo tem poucas arestas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>7) Parte matemática dos slides</h2>
+            <p>Os materiais também reforçam um modo de pensar matemático importante para a disciplina.</p>
+            <ul>
+                <li><strong>Conjectura:</strong> afirmação baseada em observações, ainda não provada.</li>
+                <li><strong>Contraexemplo:</strong> um caso que mostra que a afirmação geral era falsa.</li>
+                <li><strong>Indução matemática:</strong> prova por base + passo indutivo.</li>
+            </ul>
+            <h3>Exemplos dos slides</h3>
+            <ul>
+                <li>Soma dos primeiros inteiros: $1 + 2 + \cdots + n = \frac{n(n+1)}{2}$</li>
+                <li>Soma dos primeiros ímpares: $1 + 3 + \cdots + (2n-1) = n^2$</li>
+            </ul>
+            <pre>Estrutura da indução:
+1. Mostrar que vale para o caso inicial.
+2. Assumir que vale para n = k.
+3. Provar que então vale para n = k + 1.</pre>
+        </section>
+
+        <section>
+            <h2>8) Número de Fermat e contraexemplo</h2>
+            <p>Os slides citam a ideia de que nem toda regularidade observada em alguns casos continua valendo para todos. O contraexemplo de Euler aos números de Fermat mostra exatamente isso: observar alguns casos não é o mesmo que provar formalmente.</p>
+            <div class="note">Mensagem importante para a prova: <strong>testar alguns exemplos não substitui uma demonstração</strong>.</div>
+        </section>
+
+        <section>
+            <h2>9) O que pode cair na prova</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Definições</h3>
+                    <ul>
+                        <li>Grafo</li>
+                        <li>Vértice</li>
+                        <li>Aresta</li>
+                        <li>Grau</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Interpretação</h3>
+                    <ul>
+                        <li>Explicar Königsberg</li>
+                        <li>Identificar caminho e ciclo</li>
+                        <li>Dizer se um grafo é conectado</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Raciocínio matemático</h3>
+                    <ul>
+                        <li>Conjectura x prova</li>
+                        <li>Contraexemplo</li>
+                        <li>Indução matemática</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>10) Mini perguntas para autoavaliação</h2>
+            <ol>
+                <li>Sei explicar por que Königsberg é importante?</li>
+                <li>Consigo diferenciar caminho e ciclo?</li>
+                <li>Sei o que significa grau de um vértice?</li>
+                <li>Sei a condição básica para um circuito euleriano?</li>
+                <li>Consigo explicar o que é um contraexemplo?</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>11) Resumo-relâmpago para decorar</h2>
+            <ul>
+                <li>Grafo = vértices + arestas.</li>
+                <li>Euler iniciou a teoria com as pontes de Königsberg.</li>
+                <li>Grau é a quantidade de arestas ligadas ao vértice.</li>
+                <li>Caminho e ciclo são percursos no grafo.</li>
+                <li>Conjectura não é prova.</li>
+                <li>Contraexemplo derruba afirmações gerais falsas.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

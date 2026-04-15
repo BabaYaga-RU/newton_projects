@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo - Estrutura de Dados</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: rgba(15, 23, 42, 0.92);
+            --card: #1e293b;
+            --text: #e5eefc;
+            --accent: #38bdf8;
+            --accent2: #22c55e;
+            --warn: #f59e0b;
+            --danger: #fb7185;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #111827 55%, #172554);
+            color: var(--text);
+            line-height: 1.65;
+        }
+        .container { max-width: 1180px; margin: 0 auto; padding: 24px; }
+        .hero, section {
+            background: var(--panel);
+            border: 1px solid rgba(56, 189, 248, 0.20);
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+        }
+        h1, h2, h3 { margin-top: 0; }
+        h1 { font-size: 2rem; color: #7dd3fc; }
+        h2 { color: #93c5fd; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 14px;
+            border-left: 4px solid var(--accent);
+        }
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            margin: 4px 6px 0 0;
+            border-radius: 999px;
+            background: #0b1220;
+            color: #bfdbfe;
+            border: 1px solid #334155;
+        }
+        .note, .warning {
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .note { background: rgba(34, 197, 94, 0.12); border-left: 4px solid var(--accent2); }
+        .warning { background: rgba(245, 158, 11, 0.12); border-left: 4px solid var(--warn); }
+        .danger { background: rgba(251, 113, 133, 0.12); border-left: 4px solid var(--danger); padding: 14px; border-radius: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #334155; padding: 10px; text-align: left; vertical-align: top; }
+        th { background: #0b1220; }
+        pre {
+            background: #020617;
+            color: #c4f1ff;
+            border-radius: 10px;
+            padding: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        a { color: #7dd3fc; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        ul li, ol li { margin-bottom: 6px; }
+        @media (max-width: 700px) {
+            .container { padding: 12px; }
+            h1 { font-size: 1.55rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Guia Completo de Estrutura de Dados</h1>
+            <p>Material reforçado para estudo completo com base nos PDFs da pasta e nas entregas em Java. O foco aqui é revisar teoria, implementação e o raciocínio que costuma ser cobrado em prova.</p>
+            <span class="tag">Tipos primitivos x construídos</span>
+            <span class="tag">Vetores</span>
+            <span class="tag">Matrizes</span>
+            <span class="tag">Alocação de memória</span>
+            <span class="tag">Listas encadeadas</span>
+            <span class="tag">Complexidade</span>
+        </div>
+
+        <section>
+            <h2>Materiais-base da pasta</h2>
+            <p>
+                <a href="Aula_01_Estruturas_de_dados.pdf" target="_blank">Aula 01</a> •
+                <a href="Aula_02_Estruturas_de_dados.pdf" target="_blank">Aula 02</a> •
+                <a href="Aula_03_Estruturas_de_dados.pdf" target="_blank">Aula 03</a> •
+                <a href="Aula_04_Estruturas_de_dados.pdf" target="_blank">Aula 04</a>
+            </p>
+            <div class="note">A sequência do conteúdo observada nos PDFs é: conceito geral → vetores e matrizes → memória em Java → estruturas dinâmicas → listas encadeadas.</div>
+        </section>
+
+        <section>
+            <h2>1) O que é estrutura de dados?</h2>
+            <p>Estrutura de dados é a forma como os dados são organizados na memória para permitir processamento eficiente. Em vez de guardar tudo como variáveis isoladas, o programa agrupa informações em formatos que facilitam buscar, alterar, remover e percorrer os valores.</p>
+            <ul>
+                <li><strong>Tipos primitivos:</strong> int, float, char, boolean.</li>
+                <li><strong>Tipos construídos:</strong> vetores, matrizes, objetos, listas.</li>
+                <li><strong>Objetivo:</strong> representar melhor problemas reais e melhorar desempenho.</li>
+            </ul>
+            <div class="warning">Pergunta clássica: <strong>por que usar uma estrutura de dados?</strong> Resposta: para organizar os dados, otimizar o acesso e tornar a solução mais adequada ao problema.</div>
+        </section>
+
+        <section>
+            <h2>2) Vetores</h2>
+            <p>Vetor é uma estrutura homogênea unidimensional. Todos os elementos possuem o mesmo tipo e ficam em posições sequenciais na memória.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Características</h3>
+                    <ul>
+                        <li>Mesmo tipo para todos os elementos</li>
+                        <li>Acesso por índice</li>
+                        <li>Memória contígua</li>
+                        <li>Tamanho normalmente definido na criação</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Exemplo em Java</h3>
+                    <pre>int[] valores = new int[5];
+valores[0] = 10;
+valores[1] = 20;</pre>
+                </div>
+            </div>
+            <h3>Vantagens</h3>
+            <ul>
+                <li>Implementação simples.</li>
+                <li>Acesso rápido a qualquer posição.</li>
+                <li>Menor gasto de memória do que listas com referência.</li>
+            </ul>
+            <h3>Desvantagens</h3>
+            <ul>
+                <li>Inserir no meio exige deslocar elementos.</li>
+                <li>Remover também pode exigir deslocamento.</li>
+                <li>Tamanho pode ser limitante.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3) Matrizes</h2>
+            <p>Matriz é uma estrutura homogênea com duas ou mais dimensões. Ao contrário do vetor, exige mais de um índice para acessar cada posição.</p>
+            <pre>int[][] matriz = new int[3][3];
+matriz[0][0] = 1;
+matriz[1][2] = 9;</pre>
+            <ul>
+                <li>Boa para tabelas, tabuleiros, mapas e imagens.</li>
+                <li>Em processamento de imagens, cada posição pode representar um pixel.</li>
+                <li>No caso RGB, a representação pode envolver três dimensões.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4) Alocação de memória e Java</h2>
+            <table>
+                <tr>
+                    <th>Conceito</th>
+                    <th>Resumo</th>
+                </tr>
+                <tr>
+                    <td>Alocação estática</td>
+                    <td>Espaço reservado com tamanho conhecido. Exemplo clássico: vetores e matrizes.</td>
+                </tr>
+                <tr>
+                    <td>Alocação dinâmica</td>
+                    <td>Estrutura pode crescer ou diminuir durante a execução.</td>
+                </tr>
+                <tr>
+                    <td>Referência</td>
+                    <td>Quando não é tipo primitivo, a variável aponta para um objeto.</td>
+                </tr>
+                <tr>
+                    <td>JVM</td>
+                    <td>Gerencia a memória dos objetos Java e executa bytecode.</td>
+                </tr>
+            </table>
+            <div class="note">Lembre-se: em Java, quando você cria um objeto, a referência aponta para uma região de memória gerenciada pela JVM.</div>
+        </section>
+
+        <section>
+            <h2>5) Estruturas estáticas x dinâmicas</h2>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Exemplo</th>
+                    <th>Comportamento</th>
+                </tr>
+                <tr>
+                    <td>Estática</td>
+                    <td>Vetor / matriz</td>
+                    <td>Tamanho conhecido ou mais rígido</td>
+                </tr>
+                <tr>
+                    <td>Dinâmica</td>
+                    <td>Lista encadeada</td>
+                    <td>Permite adicionar e remover elementos em tempo de execução</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>6) Listas encadeadas</h2>
+            <p>Lista encadeada é uma estrutura dinâmica formada por nós. Cada nó guarda um dado e uma referência para o próximo elemento.</p>
+            <pre>class Nodo {
+    int dado;
+    Nodo proximo;
+}</pre>
+            <h3>Ideia central</h3>
+            <ul>
+                <li>Os elementos não precisam estar lado a lado na memória.</li>
+                <li>As referências ligam um nó ao outro.</li>
+                <li>Isso torna a inserção e a remoção mais flexíveis do que em vetores.</li>
+            </ul>
+            <div class="grid">
+                <div class="card">
+                    <h3>Simplesmente encadeada</h3>
+                    <p>Cada nó aponta apenas para o próximo.</p>
+                </div>
+                <div class="card">
+                    <h3>Duplamente encadeada</h3>
+                    <p>Cada nó aponta para o próximo e para o anterior.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>7) Operações que você precisa dominar</h2>
+            <ol>
+                <li>Criar lista vazia</li>
+                <li>Inserir no início</li>
+                <li>Inserir no final</li>
+                <li>Inserir em posição específica</li>
+                <li>Remover do início</li>
+                <li>Remover do final</li>
+                <li>Remover em posição específica</li>
+                <li>Buscar elemento</li>
+                <li>Contar elementos</li>
+                <li>Mostrar conteúdo da lista</li>
+                <li>Descobrir antecessor e sucessor</li>
+            </ol>
+            <div class="warning">Na pasta de exercícios aparecem exatamente essas operações como foco das entregas. Vale muito revisar a lógica de deslocamento em arranjo e de atualização de referência em lista encadeada.</div>
+        </section>
+
+        <section>
+            <h2>8) Vetor x lista encadeada</h2>
+            <table>
+                <tr>
+                    <th>Critério</th>
+                    <th>Vetor</th>
+                    <th>Lista encadeada</th>
+                </tr>
+                <tr>
+                    <td>Acesso por posição</td>
+                    <td>Rápido, geralmente $O(1)$</td>
+                    <td>Precisa percorrer, geralmente $O(n)$</td>
+                </tr>
+                <tr>
+                    <td>Inserção no meio</td>
+                    <td>Cara, precisa deslocar</td>
+                    <td>Mais flexível depois de achar a posição</td>
+                </tr>
+                <tr>
+                    <td>Uso de memória</td>
+                    <td>Menor</td>
+                    <td>Maior por armazenar referências</td>
+                </tr>
+                <tr>
+                    <td>Tamanho</td>
+                    <td>Mais rígido</td>
+                    <td>Mais dinâmico</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>9) Complexidade para decorar</h2>
+            <ul>
+                <li><strong>Acesso por índice no vetor:</strong> $O(1)$</li>
+                <li><strong>Busca linear:</strong> $O(n)$</li>
+                <li><strong>Inserção no meio do vetor:</strong> $O(n)$</li>
+                <li><strong>Remoção no meio do vetor:</strong> $O(n)$</li>
+                <li><strong>Percorrer lista:</strong> $O(n)$</li>
+            </ul>
+            <div class="note">Mesmo quando a lista encadeada é melhor para inserir e remover, ainda pode haver custo para localizar a posição correta.</div>
+        </section>
+
+        <section>
+            <h2>10) Perguntas que podem cair</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Teóricas</h3>
+                    <ul>
+                        <li>O que é uma estrutura de dados?</li>
+                        <li>Qual a diferença entre estrutura estática e dinâmica?</li>
+                        <li>Quais as vantagens e desvantagens dos vetores?</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Práticas</h3>
+                    <ul>
+                        <li>Declarar um vetor e uma matriz em Java</li>
+                        <li>Explicar inserção e remoção</li>
+                        <li>Desenhar uma lista com nós e referências</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Comparativas</h3>
+                    <ul>
+                        <li>Quando usar vetor?</li>
+                        <li>Quando usar lista encadeada?</li>
+                        <li>Qual gasta mais memória?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>11) Mini revisão-relâmpago</h2>
+            <ol>
+                <li>Vetor = homogêneo + índice + memória sequencial.</li>
+                <li>Matriz = várias dimensões.</li>
+                <li>Estrutura estática = tamanho mais rígido.</li>
+                <li>Lista encadeada = nós + referências.</li>
+                <li>Inserir/remover no meio do vetor tende a ser caro.</li>
+                <li>Java usa JVM e referências para objetos.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>12) O que não esquecer antes da prova</h2>
+            <div class="danger">
+                <ul>
+                    <li>Não confunda acesso rápido com inserção rápida.</li>
+                    <li>Não esqueça que lista encadeada precisa percorrer os nós para buscar.</li>
+                    <li>Em Java, arrays e objetos são referências, e a JVM gerencia a memória.</li>
+                    <li>Se pedirem vantagens/desvantagens, cite pelo menos duas de cada.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

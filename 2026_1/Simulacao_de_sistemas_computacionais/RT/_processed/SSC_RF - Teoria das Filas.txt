@@ -1,0 +1,301 @@
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+Disciplina: Simulação de Sistemas Computacionais
+Professor: Ruy Barbosa Figueiredo Junior
+
+1. Introdução à Teoria das Filas
+A Teoria das Filas é um ramo da pesquisa operacional e da probabilidade que estuda matematicamente
+o comportamento de linhas de espera. Desenvolvida inicialmente por A. K. Erlang no contexto de sistemas
+telefônicos, a teoria busca dimensionar recursos de forma a equilibrar demanda e capacidade, minimizando
+tempos de espera e evitando congestionamentos
+
+1.1. Aplicações:
+A teoria das filas é uma ferramenta matemática poderosa que serve para analisar e otimizar sistemas de
+espera — desde filas em supermercados até servidores em redes de computadores. Ela ajuda a entender
+como os recursos são utilizados e como minimizar o tempo de espera dos “clientes”, que podem ser
+pessoas, dados, veículos ou qualquer entidade que aguarda por um serviço.
+Principais objetivos da teoria das filas:
+• Reduzir o tempo de espera
+• Evitar gargalos e sobrecarga nos sistemas
+• Melhorar a eficiência dos serviços
+• Dimensionar corretamente recursos como atendentes, máquinas ou servidores
+
+Onde é utilizada:
+• Sistemas Computacionais: Escalonamento de processos, redes de computadores, servidores web,
+bancos de dados.
+• Telecomunicações: Controle de tráfego de pacotes em roteadores.
+• Logística e Serviços: Pedágios, aeroportos, supermercados, hospitais.
+• Manufatura: Linhas de produção e controle de manutenção.
+
+Utilização na Computação:
+• Gerenciamento de Processos em Sistemas Operacionais: O sistema operacional usa filas para
+agendar processos que aguardam tempo de CPU.
+Modelos como M/M/1 ajudam a prever o tempo médio de espera e a utilização do processador.
+Exemplo: o escalonador de tarefas do Linux pode ser modelado como uma fila com múltiplos servidores
+(núcleos de CPU).
+
+• Servidores Web e Balanceamento de Carga: Quando múltiplos usuários acessam um site, os
+pedidos são enfileirados para serem processados por servidores.
+
+A teoria das filas ajuda a decidir quantos servidores são necessários para manter o tempo de resposta
+baixo.
+Exemplo: servidores de aplicações como Nginx ou Apache usam filas para gerenciar requisições
+simultâneas.
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+• Redes de Computadores: Pacotes de dados são enfileirados em roteadores e switches antes de
+serem encaminhados.
+Modelos de filas ajudam a prever congestionamento de rede e a melhorar protocolos como TCP/IP .
+Exemplo: filas FIFO (First-In, First-Out) são comuns em buffers de rede.
+
+• Inteligência Artificial e Machine Learning: Em sistemas distribuídos de treinamento de modelos,
+tarefas são enfileiradas para serem processadas por GPUs.
+A teoria das filas ajuda a otimizar o uso de recursos computacionais em clusters.
+
+• Sistemas de Banco de Dados: Consultas são enfileiradas para acesso ao banco, especialmente em
+sistemas com alta concorrência.
+A modelagem de filas permite prever tempo de resposta e taxa de throughput.
+
+• Simulação e Modelagem de Sistemas: Ferramentas como SimPy (Python) ou Arena usam teoria
+das filas para simular sistemas complexos.
+Exemplo: simular o comportamento de uma fila de impressão em uma rede corporativa.
+
+1.2. Elementos de um Sistema de Filas:
+Um sistema de filas é composto por:
+
+1. População de Clientes: Fonte de entidades que demandam serviço (finita ou infinita).
+
+2. Processo de Chegada: Modelado por uma distribuição de probabilidade para o tempo entre
+chegadas (exemplo: exponencial).
+
+3. Processo de Serviço:
+• Fila (Buffer): Local onde os clientes aguardam pelo serviço. Sua capacidade pode ser finita ou
+infinita.
+➢ Mecanismo de Disciplina da Fila: Regra que define a ordem de atendimento. A mais comum é
+FIFO (First-In, First-Out/Primeiro a Entrar, Primeiro a Sair). Outras incluem LIFO, Prioridades,
+etc.
+
+➢ Servidor(s): Entidade(s) que realiza(m) o serviço. O tempo gasto para atender um cliente é
+modelado por uma distribuição de probabilidade para o tempo de serviço (exemplo:
+Distribuição Exponencial).
+
+• Disciplina da Fila: Regra de atendimento (exemplo: FIFO, LIFO, prioridades).
+
+• Servidor(es): Recurso que realiza o serviço, com tempo de serviço modelado probabilisticamente.
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+Medidas de Desempenho:
+• ρ: Taxa de utilização do(s) servidor(es).
+• L: Número médio de clientes no sistema.
+• Lq: Número médio de clientes na fila.
+• W: Tempo médio no sistema.
+• Wq: Tempo médio de espera na fila.
+
+2. Notação de Kendall
+A notação de Kendall é uma forma padronizada e compacta de descrever modelos de filas na teoria das
+filas. Ela foi proposta por David G. Kendall em 1953 e é amplamente usada para representar sistemas de
+espera em diversas áreas, como computação, engenharia, logística e saúde.
+
+Estrutura da Notação:
+Cada letra ou símbolo representa uma característica do sistema de filas:
+Símbolo Significado Descrição
+A Processo de Chegada
+Distribuição dos tempos entre chegadas (exemplo: M para
+exponencial, D para determinístico e G para geral)
+B Processo de serviço Distribuição dos tempos de atendimento (Mesmas opções de A)
+c Número de servidores Quantos servidores atendem simultaneamente
+k Capacidade de sistema Número máximo de clientes no sistema (fila + serviço)
+m Tamanho da população
+Número total de clientes possíveis (Exemplo: usuários de um
+determinado sistema)
+z
+Escalonamento
+(disciplina) da fila
+Ordem de atendimento (Exemplo: FIFO, LIFO, prioridade)
+
+A (Processo de Chegadas): Distribuição dos tempos entre chegadas.
+• M (Markovian): Distribuição Exponencial (única distribuição contínua sem memória).
+• D (Deterministic): Tempos constantes entre chegadas.
+• G (General): Qualquer distribuição geral (exemplo: Normal, Uniforme).
+• Ek (Erlang-k): Distribuição Erlang de estágio k.
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+
+B (Processo de Serviço): Distribuição dos tempos de serviço.
+M, D, G, Ek (as mesmas definições de `A` se aplicam).
+
+c (Número de Servidores): Número de servidores paralelos e idênticos no sistema (exemplo: 1, 2, 3, ... k).
+
+K (Capacidade do Sistema - Opcional): Número máximo de clientes permitidos no sistema (fila + serviço).
+Se omitido, assume-se capacidade infinita.
+
+m (Tamanho da População - Opcional): Tamanho da população de clientes. Se omitido, assume-se
+população infinita.
+
+Z (Disciplina da Fila - Opcional): Regra de atendimento (exemplo: FIFO, LIFO, Prioridade). Se omitida,
+assume-se FIFO.
+
+Exemplos:
+➢ M/M/1: Chegadas Markovianas (Exponencial), Serviços Markovianos (Exponencial), 1 servidor,
+capacidade infinita, população infinita, disciplina FIFO.
+➢ M/D/3/10: Chegadas Markovianas, Serviços Determinísticos (constantes), 3 servidores,
+capacidade máxima do sistema é 10 clientes.
+➢ M/G/4: Chegadas Markovianas, Serviços com distribuição Geral, 4 servidores.
+
+3. Análise de Sistemas de Filas Simples (M/M/1 e M/M/k)
+Para a análise, assumimos população infinita, disciplina FIFO e capacidade infinita, a menos que
+especificado o contrário.
+
+3.1. Sistema M/M/1
+É o modelo mais simples e fundamental.
+Premissas:
+✓ Chegadas seguem um processo de Poisson com taxa λ
+✓ Tempos de serviço são exponenciais com taxa µ
+✓ k servidores idênticos
+✓ Fila única, capacidade infinita
+✓ Ordem de atendimento: FIFO
+✓ Condição de estabilidade: ρ = (λ/kµ) < 1
+
+• Taxa de chegada( 𝜆 ): Número médio de chegadas por unidade de tempo.
+• Taxa de serviço ( 𝜇 ): Número médio de clientes que um servidor pode atender por unidade de
+tempo.
+• Condição de Estabilidade: A taxa de chegada deve ser menor que a taxa de serviço ( 𝜆  <  𝜇 ).
+Caso contrário, a fila crescerá indefinidamente.
+• À medida que ρ se aproxima de 1, o sistema entra em colapso: filas crescem indefinidamente e
+tempos de espera explodem.
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+
+Medidas de Desempenho (Fórmulas):
+
+Fórmula de Little (válida para qualquer sistema estável não, não apenas M/M/1):
+
+3.2. Sistema M/M/k
+o modelo M/M/k, que é uma extensão natural do M/M/1 para múltiplos servidores paralelos. Esse
+modelo é amplamente usado em sistemas de computação distribuída, data centers, call centers, redes de
+telecomunicações, entre outros — sempre que há vários recursos atendendo uma fila única.
+Vamos organizar essas fórmulas e premissas de forma clara e prática.
+Premissas:
+✓ Chegadas seguem um processo de Poisson com taxa λ
+✓ Tempos de serviço são exponenciais com taxa µ
+✓ k servidores idênticos
+✓ Fila única, capacidade infinita
+✓ Ordem de atendimento: FIFO
+✓ Condição de estabilidade: ρ = (λ/kµ) < 1
+
+Métrica Fórmula Interpretação
+1. Fator de
+Utilização do
+sistema
+Proporção do tempo que o servidor está ocupado.
+Deve ser menor que 1 para evitar sobrecarga.
+2. Número médio
+no sistema
+
+Quantidade média de clientes ou tarefas presentes no
+sistema, incluindo os que estão sendo atendidos e os
+que estão esperando na fila.
+3.  Número médio
+na fila
+
+Quantidade média de clientes que estão esperando
+para serem atendidos — ou seja, na fila, excluindo o
+cliente que está sendo atendido.
+
+4.  Tempo médio
+no sistema
+
+Tempo médio que um cliente passa no sistema, desde
+o momento em que chega até o momento em que sai,
+incluindo:
+• o tempo de espera na fila
+• o tempo de atendimento
+
+5.  Tempo médio
+na fila
+
+Tempo médio que um cliente espera na fila antes de
+começar a ser atendido.
+Esse valor não inclui o tempo de atendimento, apenas
+o tempo de espera.
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+Parâmetros:
+
+Medidas de Desempenho (Fórmulas Principais):
+Métrica Fórmula Interpretação
+1. Utilização por
+servidor
+
+Medo o quanto cada
+servidor está ocupado
+2. Probabilidade de
+sistema vazio
+
+A probabilidade de que
+não haja nenhum cliente
+no sistema — ou seja,
+nenhum cliente em
+atendimento e nenhum
+na fila.
+3. Probabilidade de
+espera (Erlang-c)
+
+Chance ou probabilidade
+de um cliente ter que
+esperar na fila
+4. Número médio
+na fila
+
+Clientes aguardando
+atendimento
+5. Número médio
+no sistema
+
+Clientes na fila + clientes
+sendo atendidos
+6. Tempo médio na
+fila
+
+Tempo de espera antes
+do serviço
+7. Tempo médio no
+sistema
+Tempo total: espera +
+serviço
+
+Elemento Descrição
+λ Taxa média de chegada de clientes
+µ Taxa média de serviços por servidor
+k Número de servidores paralelos
+ρ Fator de utilização por servidor: ρ = (λ/kµ)
+Condição de estabilidade ρ < 1 -> o sistemas não entra em colapso
+
+Teoria das Filas e Aplicação à
+Simulação de Sistemas Digitais
+
+Aplicações práticas em computação:
+• Servidores de aplicação: múltiplos threads ou instâncias atendendo requisições simultâneas.
+• Cloud computing: balanceamento de carga entre máquinas virtuais.
+• Sistemas de filas em microserviços: onde múltiplos workers processam tarefas de uma fila
+comum.
+• Call centers virtuais: modelagem de atendimento simultâneo por agentes.
+
+Conclusões:
+A Teoria das Filas fornece as ferramentas analíticas para modelar, analisar e prever o
+comportamento de sistemas de espera.
+
+Os modelos M/M/1 e M/M/k, embora simples, capturam a essência da aleatoriedade nestes
+sistemas e são a base para modelos mais complexos.
+
+O entendimento da notação de Kendall é crucial para a comunicação e identificação precisa do
+modelo a ser utilizado.
+
+Em simulação computacional, estes modelos analíticos servem como benchmark para validar e
+calibrar modelos de simulação mais complexos e realistas que fogem das suposições matemáticas
+restritivas (como populações finitas ou distribuições não-exponenciais).

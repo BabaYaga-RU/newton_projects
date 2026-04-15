@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia Completo para Prova - Simulacao de Sistemas Computacionais</title>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --ink: #1f2933;
+      --muted: #52606d;
+      --card: #ffffff;
+      --accent: #0f766e;
+      --accent-2: #d97706;
+      --accent-3: #1d4ed8;
+      --ok: #2f9e44;
+      --warn: #d9480f;
+      --soft: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 5% 8%, #fff1bf 0 16%, transparent 17%),
+        radial-gradient(circle at 92% 18%, #dbeafe 0 14%, transparent 15%),
+        radial-gradient(circle at 18% 92%, #dcfce7 0 12%, transparent 13%),
+        var(--bg);
+    }
+
+    .wrap {
+      width: min(1140px, 94vw);
+      margin: 20px auto 48px;
+    }
+
+    .hero {
+      background: linear-gradient(125deg, #0f766e, #1d4ed8 52%, #0284c7);
+      color: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 16px 36px rgba(15, 118, 110, 0.28);
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      line-height: 1.2;
+      font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+    }
+
+    .hero p { margin: 0; opacity: 0.96; }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #083344;
+      background: #ecfeff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card {
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid #dbe2ea;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+    }
+
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    h2, h3 {
+      margin-top: 0;
+      line-height: 1.25;
+    }
+
+    h2 {
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+      font-size: 1.25rem;
+    }
+
+    h3 {
+      color: #0f172a;
+      font-size: 1.04rem;
+      margin-bottom: 6px;
+    }
+
+    ul, ol {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li { margin-bottom: 5px; }
+
+    .muted { color: var(--muted); }
+
+    .formula, .resolution {
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .formula {
+      background: #fff8eb;
+      border-left: 4px solid var(--accent-2);
+    }
+
+    .resolution {
+      background: #eef6ff;
+      border-left: 4px solid var(--accent-3);
+    }
+
+    .tip {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 10px;
+    }
+
+    .warn {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 10px;
+    }
+
+    .ok { color: var(--ok); font-weight: 700; }
+    .danger { color: var(--warn); font-weight: 700; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: var(--soft); }
+
+    details {
+      border: 1px dashed #94a3b8;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+      background: #fafafa;
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .checklist label {
+      display: block;
+      margin: 6px 0;
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .span-4, .span-6, .span-8, .span-12 { grid-column: span 12; }
+      .hero { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Guia Completo para Estudo da Prova</h1>
+      <p>Compilado dos materiais da pasta RT, agora com explicacao do zero: primeiro voce entende a ideia, depois ve a formula e por fim resolve passo a passo.</p>
+      <div class="badges">
+        <span class="badge">Estatistica Aplicada</span>
+        <span class="badge">Simulacao de Sistemas Computacionais</span>
+        <span class="badge">Teoria das Filas</span>
+      </div>
+      <nav class="nav">
+        <a href="#iniciante">Comecando do Zero</a>
+        <a href="#mapa">Mapa da Prova</a>
+        <a href="#simulacao">Simulacao</a>
+        <a href="#estatistica">Estatistica</a>
+        <a href="#filas">Filas</a>
+        <a href="#resolvidos">Exercicios Resolvidos</a>
+        <a href="#quiz">Quiz Comentado</a>
+        <a href="#revisao">Revisao Final</a>
+      </nav>
+    </section>
+
+    <section class="grid" id="iniciante">
+      <article class="card span-12">
+        <h2>0) Comecando do Zero (sem base previa)</h2>
+        <p>Se as formulas parecem codigos aleatorios, use este roteiro sempre:</p>
+        <ol>
+          <li><strong>Leia a pergunta em portugues simples:</strong> o que estao pedindo para descobrir?</li>
+          <li><strong>Liste os dados:</strong> escreva os numeros que voce recebeu.</li>
+          <li><strong>Escolha a ferramenta:</strong> media (centro), desvio (espalhamento), fila (espera), etc.</li>
+          <li><strong>Calcule com calma:</strong> uma linha por vez, sem pular etapa.</li>
+          <li><strong>Interprete:</strong> termine com "isso indica que...".</li>
+        </ol>
+        <div class="tip">
+          <strong>Regra pratica:</strong> na prova, conta sem interpretacao perde ponto. Sempre escreva o significado final do numero.
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Dicionario rapido de simbolos</h3>
+        <ul>
+          <li><strong>n:</strong> quantidade de valores da amostra.</li>
+          <li><strong>xi:</strong> cada valor individual da lista.</li>
+          <li><strong>x_barra:</strong> media da amostra (valor central).</li>
+          <li><strong>s^2:</strong> variancia amostral (espalhamento ao quadrado).</li>
+          <li><strong>s:</strong> desvio padrao (espalhamento na unidade original).</li>
+          <li><strong>CV:</strong> variacao relativa em porcentagem.</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Como estudar sem travar</h3>
+        <ol>
+          <li>Comece por 1 exercicio facil de media/desvio.</li>
+          <li>Repita o mesmo tipo trocando os numeros.</li>
+          <li>So depois avance para IC e valor-p.</li>
+          <li>No final, faca 1 questao de fila (M/M/1).</li>
+        </ol>
+        <div class="warn">
+          <strong>Erro comum:</strong> tentar decorar todas as formulas de uma vez. Entenda primeiro o que cada medida responde.
+        </div>
+      </article>
+    </section>
+
+    <section class="grid" id="mapa">
+      <article class="card span-4">
+        <h3>Fontes processadas</h3>
+        <ul>
+          <li>SSC_RF - Estatistica Aplicada.pdf (15 paginas)</li>
+          <li>SSC_RF - Simulacao de Sistemas Computacionais.pdf (7 paginas)</li>
+          <li>SSC_RF - Teoria das Filas.pdf (7 paginas)</li>
+        </ul>
+      </article>
+
+      <article class="card span-4">
+        <h3>Topicos com alta chance</h3>
+        <ul>
+          <li>Conceitos de sistema, modelo e evento.</li>
+          <li>Modelagem: etapas e validacao.</li>
+          <li>Media, mediana, variancia, desvio, CV.</li>
+          <li>Intervalo de confianca e valor-p.</li>
+          <li>Notacao de Kendall e modelos M/M/1, M/M/k.</li>
+          <li>Lei de Little e condicao de estabilidade.</li>
+        </ul>
+      </article>
+
+      <article class="card span-4">
+        <h3>Regra de ouro</h3>
+        <p class="muted">Nao basta decorar formula: a prova normalmente cobra interpretacao. Sempre diga o significado fisico do resultado.</p>
+        <div class="tip">
+          <strong>Dica:</strong> quando calcular algo, escreva em frase final: "isso indica que...".
+        </div>
+      </article>
+
+      <article class="card span-12" id="simulacao">
+        <h2>1) Simulacao de Sistemas Computacionais (Teoria Completa)</h2>
+        <p><strong>Conceito:</strong> simulacao e a criacao de um modelo computacional de um sistema real para experimentar cenarios sem afetar o sistema real.</p>
+
+        <h3>1.1 Conceitos basicos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Termo</th>
+              <th>Definicao</th>
+              <th>Exemplo em computacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sistema</td>
+              <td>Conjunto de entidades que interagem para um objetivo.</td>
+              <td>Servidor web atendendo requisicoes.</td>
+            </tr>
+            <tr>
+              <td>Modelo</td>
+              <td>Representacao simplificada do sistema real.</td>
+              <td>Fila de requisicoes com taxa media de chegada.</td>
+            </tr>
+            <tr>
+              <td>Evento</td>
+              <td>Ocorrencia que muda estado do sistema.</td>
+              <td>Chegada de pacote, fim de atendimento.</td>
+            </tr>
+            <tr>
+              <td>Variavel de estado</td>
+              <td>Informacao que descreve o sistema naquele instante.</td>
+              <td>Numero de clientes na fila.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>1.2 Etapas da modelagem</h3>
+        <ol>
+          <li>Definir problema com pergunta mensuravel.</li>
+          <li>Selecionar variaveis de entrada e saida.</li>
+          <li>Escolher nivel de abstracao (nem simples demais, nem complexo demais).</li>
+          <li>Construir modelo (analitico ou simulacao).</li>
+          <li>Validar com dados reais.</li>
+          <li>Rodar cenarios e comparar indicadores.</li>
+          <li>Concluir e recomendar decisoes.</li>
+        </ol>
+
+        <h3>1.3 Analitico x Simulacao</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Modelo analitico</th>
+              <th>Simulacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Complexidade aceita</td>
+              <td>Baixa a media</td>
+              <td>Media a alta</td>
+            </tr>
+            <tr>
+              <td>Resultado</td>
+              <td>Fechado/exato (quando possivel)</td>
+              <td>Estimativa estatistica</td>
+            </tr>
+            <tr>
+              <td>Tempo de preparacao</td>
+              <td>Alto para formular</td>
+              <td>Alto para modelar e calibrar</td>
+            </tr>
+            <tr>
+              <td>Quando usar</td>
+              <td>Sistema com hipoteses fortes</td>
+              <td>Sistema realista com variabilidade</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card span-12" id="estatistica">
+        <h2>2) Estatistica Aplicada (Teoria + Interpretacao)</h2>
+
+        <h3>2.1 Estatistica descritiva</h3>
+        <p>Serve para responder duas perguntas basicas: <strong>qual e o centro dos dados?</strong> e <strong>o quanto os dados variam?</strong></p>
+
+        <h3>2.1.1 Traduzindo as formulas para linguagem simples</h3>
+        <div class="formula">Media amostral (x_barra):
+      Some todos os valores e divida pela quantidade de valores.
+      x_barra = (x1 + x2 + ... + xn) / n</div>
+
+        <div class="formula">Variancia amostral (s^2):
+      Veja o quanto cada valor se afasta da media, eleve ao quadrado, some tudo e divida por (n - 1).
+      s^2 = soma((xi - x_barra)^2) / (n - 1)</div>
+
+        <div class="formula">Desvio padrao (s):
+      E a raiz da variancia. Mostra a "distancia tipica" dos valores ate a media.
+      s = raiz(s^2)</div>
+
+        <div class="formula">Coeficiente de variacao (CV):
+      Compara o desvio com a media em porcentagem.
+      CV = (s / x_barra) * 100%</div>
+
+        <h3>2.1.2 Exemplo do zero (bem guiado)</h3>
+        <p><strong>Dados:</strong> [10, 12, 8, 10, 10]</p>
+        <div class="resolution">Passo 1: media
+      x_barra = (10 + 12 + 8 + 10 + 10) / 5 = 50 / 5 = 10
+
+      Passo 2: variancia
+      Desvios para a media: (10-10)=0, (12-10)=2, (8-10)=-2, (10-10)=0, (10-10)=0
+      Quadrados: 0, 4, 4, 0, 0
+      Soma dos quadrados = 8
+      s^2 = 8 / (5-1) = 8/4 = 2
+
+      Passo 3: desvio padrao
+      s = raiz(2) = 1,41
+
+      Passo 4: coeficiente de variacao
+      CV = (1,41 / 10) * 100 = 14,1%
+
+      Interpretacao final:
+      Os dados giram em torno de 10, com variacao moderada (CV de 14,1%).</div>
+
+        <div class="warn">
+          <strong>Cuidado de prova:</strong> media e sensivel a outliers; mediana e mais robusta. Se aparecer valor muito distante, comente isso na interpretacao.
+        </div>
+
+        <h3>2.2 Quartis e boxplot</h3>
+        <ul>
+          <li>Q1: 25% dos dados abaixo.</li>
+          <li>Q2: mediana (50%).</li>
+          <li>Q3: 75% dos dados abaixo.</li>
+          <li>IQR = Q3 - Q1 indica dispersao central.</li>
+        </ul>
+
+        <h3>2.3 Estatistica inferencial</h3>
+        <ul>
+          <li>Populacao: conjunto total.</li>
+          <li>Amostra: subconjunto usado para inferir sobre a populacao.</li>
+          <li>Intervalo de confianca: faixa plausivel para parametro populacional.</li>
+          <li>Teste de hipotese: compara evidencias da amostra com H0.</li>
+        </ul>
+
+        <div class="formula">Regra comum no teste t: se p &lt; 0,05, rejeita H0 (ha evidencia de diferenca).</div>
+
+        <details>
+          <summary>Interpretacao correta de valor-p</summary>
+          <p>Valor-p nao e a probabilidade de H0 ser verdadeira. E a probabilidade de observar resultado tao extremo quanto o da amostra assumindo H0 verdadeira.</p>
+        </details>
+      </article>
+
+      <article class="card span-12" id="filas">
+        <h2>3) Teoria das Filas (Completo para Prova)</h2>
+
+        <h3>3.1 Elementos do sistema de fila</h3>
+        <ul>
+          <li>Processo de chegadas (taxa lambda).</li>
+          <li>Processo de servico (taxa mu por servidor).</li>
+          <li>Numero de servidores (k).</li>
+          <li>Disciplina (FIFO, LIFO, prioridade).</li>
+          <li>Capacidade total e populacao.</li>
+        </ul>
+
+        <h3>3.2 Notacao de Kendall</h3>
+        <div class="formula">A/B/c/K/m/Z</div>
+        <ul>
+          <li>A: distribuicao entre chegadas (M, D, G, Erlang-k).</li>
+          <li>B: distribuicao do tempo de servico.</li>
+          <li>c: numero de servidores.</li>
+          <li>K: capacidade total do sistema.</li>
+          <li>m: tamanho da populacao.</li>
+          <li>Z: disciplina da fila.</li>
+        </ul>
+
+        <h3>3.3 Formulas essenciais M/M/1</h3>
+        <div class="formula">rho = lambda / mu   (condicao de estabilidade: rho &lt; 1)</div>
+        <div class="formula">L = rho / (1 - rho)</div>
+        <div class="formula">Lq = rho^2 / (1 - rho)</div>
+        <div class="formula">W = 1 / (mu - lambda)</div>
+        <div class="formula">Wq = lambda / (mu * (mu - lambda))</div>
+        <div class="formula">Lei de Little: L = lambda * W e Lq = lambda * Wq</div>
+
+        <h3>3.4 M/M/k (multiplos servidores)</h3>
+        <div class="formula">Utilizacao por servidor: rho = lambda / (k * mu)</div>
+        <p><span class="ok">Estavel:</span> rho &lt; 1 | <span class="danger">Instavel:</span> rho >= 1</p>
+        <p class="muted">Em prova, mesmo sem decorar Erlang-C completo, normalmente voce precisa interpretar efeito de aumentar k: queda de fila/espera e menor risco de colapso.</p>
+      </article>
+
+      <article class="card span-12" id="resolvidos">
+        <h2>4) Exercicios Resolvidos (Passo a Passo)</h2>
+
+        <h3>Exercicio 1 - Estatistica descritiva</h3>
+        <p><strong>Dados (tempo de resposta em ms):</strong> [100, 105, 98, 102, 101]</p>
+        <div class="resolution">Passo 1: media
+x_barra = (100 + 105 + 98 + 102 + 101) / 5
+x_barra = 506 / 5 = 101,2 ms
+
+Passo 2: variancia amostral
+Desvios: -1,2; 3,8; -3,2; 0,8; -0,2
+Quadrados: 1,44; 14,44; 10,24; 0,64; 0,04
+Soma = 26,80
+s^2 = 26,80 / (5 - 1) = 6,70
+
+Passo 3: desvio padrao
+s = raiz(6,70) = 2,59 ms
+
+Passo 4: coeficiente de variacao
+CV = (2,59 / 101,2) * 100 = 2,56%
+
+Conclusao:
+Baixa variabilidade. Sistema estavel.</div>
+
+        <h3>Exercicio 2 - Comparacao de amostras (estabilidade)</h3>
+        <p><strong>Amostra A:</strong> [100, 105, 98, 102, 101] | <strong>Amostra B:</strong> [80, 120, 90, 110, 100]</p>
+        <div class="resolution">Resumo da dispersao:
+Amostra A: media ~101,2 e CV ~2,56%
+Amostra B: media =100, desvio ~15,81 e CV ~15,81%
+
+Conclusao:
+Amostra A e mais estavel.
+Amostra B apresenta comportamento mais imprevisivel (maior dispersao).</div>
+
+        <h3>Exercicio 3 - Intervalo de confianca de 95% (media)</h3>
+        <p><strong>Dados de altura (cm):</strong> [168, 170, 172, 169, 171, 173, 167, 170, 169, 172]</p>
+        <div class="resolution">n = 10
+media = 170,1
+desvio amostral ~ 1,91
+erro padrao = 1,91 / raiz(10) = 0,60
+
+Usando t(0,975; gl=9) ~ 2,262:
+Margem = 2,262 * 0,60 = 1,36
+
+IC 95% = 170,1 +- 1,36
+IC 95% = [168,74 ; 171,46]
+
+Interpretacao:
+Com 95% de confianca, a media populacional esta nesse intervalo.</div>
+
+        <h3>Exercicio 4 - Teste de hipotese (interpretacao de valor-p)</h3>
+        <p>Suponha teste t entre metodo tradicional e novo metodo retornando <strong>p = 0,058</strong> com alfa = 0,05.</p>
+        <div class="resolution">Regra:
+Se p < 0,05 -> rejeita H0
+Se p >= 0,05 -> nao rejeita H0
+
+Aplicando:
+0,058 > 0,05
+Logo: nao rejeitamos H0.
+
+Frase correta de prova:
+"Nao houve evidencia estatistica suficiente para afirmar diferenca entre as medias ao nivel de 5%."</div>
+
+        <h3>Exercicio 5 - M/M/1 completo</h3>
+        <p><strong>Dado:</strong> lambda = 8 clientes/hora, mu = 10 clientes/hora.</p>
+        <div class="resolution">Passo 1: utilizacao
+rho = lambda/mu = 8/10 = 0,8 (estavel, pois < 1)
+
+Passo 2: numero medio no sistema
+L = rho/(1-rho) = 0,8/0,2 = 4 clientes
+
+Passo 3: numero medio na fila
+Lq = rho^2/(1-rho) = 0,64/0,2 = 3,2 clientes
+
+Passo 4: tempo medio no sistema
+W = 1/(mu-lambda) = 1/(10-8) = 0,5 hora = 30 min
+
+Passo 5: tempo medio na fila
+Wq = lambda/(mu*(mu-lambda)) = 8/(10*2) = 0,4 hora = 24 min
+
+Cheque com Little:
+L = lambda*W = 8*0,5 = 4 (ok)
+Lq = lambda*Wq = 8*0,4 = 3,2 (ok)</div>
+
+        <h3>Exercicio 6 - Efeito de aumentar servidores (M/M/k)</h3>
+        <p><strong>Cenario:</strong> lambda = 18 req/min, mu = 10 req/min por servidor.</p>
+        <div class="resolution">Com k=1:
+rho = 18/(1*10) = 1,8 -> sistema instavel (colapso)
+
+Com k=2:
+rho = 18/(2*10) = 0,9 -> sistema estavel, mas muito carregado
+
+Com k=3:
+rho = 18/(3*10) = 0,6 -> folga operacional maior
+
+Conclusao:
+Aumentar k reduz utilizacao por servidor e tende a diminuir fila e espera.</div>
+      </article>
+
+      <article class="card span-6" id="quiz">
+        <h2>5) Quiz com Gabarito Comentado</h2>
+        <ol>
+          <li>Quando um modelo analitico e preferivel?
+            <div class="tip">Quando o sistema e relativamente simples e as hipoteses matematicas sao plausiveis.</div>
+          </li>
+          <li>Qual medida e mais robusta a outlier, media ou mediana?
+            <div class="tip">Mediana, porque outlier afeta muito menos sua posicao.</div>
+          </li>
+          <li>O que significa p &lt; 0,05?
+            <div class="tip">Ha evidencia estatistica para rejeitar H0 ao nivel de 5%.</div>
+          </li>
+          <li>No M/M/1, o que ocorre quando lambda se aproxima de mu?
+            <div class="tip">rho aproxima de 1 e tempos de espera crescem fortemente.</div>
+          </li>
+          <li>Explique M/D/3/10.
+            <div class="tip">Chegadas Markovianas, servico deterministico, 3 servidores, capacidade total 10 clientes.</div>
+          </li>
+        </ol>
+      </article>
+
+      <article class="card span-6" id="revisao">
+        <h2>6) Revisao de Ultima Hora</h2>
+        <h3>Checklist final (marque mentalmente)</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Sei diferenciar sistema, modelo e evento.</label>
+          <label><input type="checkbox" /> Consigo explicar analitico x simulacao.</label>
+          <label><input type="checkbox" /> Sei calcular media, variancia, desvio e CV.</label>
+          <label><input type="checkbox" /> Entendo IC 95% e valor-p.</label>
+          <label><input type="checkbox" /> Sei ler notacao de Kendall.</label>
+          <label><input type="checkbox" /> Sei resolver M/M/1 e checar Little.</label>
+          <label><input type="checkbox" /> Sei avaliar estabilidade por rho.</label>
+        </div>
+
+        <h3>Plano de 2h30 na vespera</h3>
+        <ol>
+          <li>40 min: teoria de simulacao + definicoes.</li>
+          <li>55 min: estatistica (formulas e interpretacao).</li>
+          <li>55 min: filas + exercicios M/M/1 e M/M/k.</li>
+        </ol>
+      </article>
+    </section>
+
+    <footer>
+      Versao completa gerada com base nos PDFs da pasta RT. Bons estudos e boa prova.
+    </footer>
+  </main>
+</body>
+</html>

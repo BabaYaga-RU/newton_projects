@@ -1,0 +1,189 @@
+Simulação de Sistemas Computacionais
+Disciplina: Simulação de Sistemas Computacionais
+Professor: Ruy Barbosa Figueiredo Junior
+1.  Introdução
+Imagine que você é responsável por otimizar o fluxo de atendimento em uma UPA. Construir fisicamente
+diferentes layouts e testar cada um seria caro, demorado e caótico. É aí que entra a simulação
+computacional: uma ferramenta poderosa para modelar, testar e prever o comportamento de sistemas
+complexos sem precisar mexer no mundo real.
+A simulação é uma técnica que permite representar o funcionamento de um sistema real por meio de um
+modelo computacional. Ela é usada para:
+- Analisar desempenho
+- Testar cenários
+- Tomar decisões baseadas em dados
+“Simular é experimentar o futuro sem pagar o preço do presente.”
+(Leonardo Chwif)
+
+A simuçaão nos permite criar laboratórios virtuais onde podemos experimentar, falhar, aprender e
+otimizar sem consequências no mundo real.
+
+Segurança Total
+Teste cenários extremos e falhas sem
+riscos para pessoas ou equipamentos
+Economia de Recursos
+Evite custos de protótipos físicos
+e testes destrutivos
+Exploração de Cenários
+Analise situações impossíveis ou
+impraticáveis no mundo real
+A simulação é como ter uma máquina do tempo para o futuro - permite experimentar as consequências de
+decisões antes de tomá-las. Em nossa área, isso significa poder testar arquiteturas de rede, algoritmos de
+escalonamento, estratégias de balanceamento de carga e muito mais, tudo em ambiente controlado.
+
+Simulação de Sistemas Computacionais
+2.  Conceitos Fundamentais de Simulação
+Todo sistema de simulação é construído sobre pilares fundamentais que precisamos dominar. Estes
+conceitos são os blocos de construção que nos permitirão criar modelos precisos e úteis.
+
+2.1  Modelagem de Sistemas
+Modelar é como contar uma história técnica: você escolhe os personagens (entidades), os cenários
+(recursos), os conflitos (eventos) e os desfechos (resultados). A modelagem é o primeiro passo para
+simular.
+Etapas da modelagem:
+1. Definir o problema
+2. Identificar variáveis e parâmetros
+3. Escolher o tipo de modelo
+Sistema
+Uma coleção de entidades que interagem para atingir um objetivo comum. Pode ser desde um processador
+executando múltiplas tarefas até uma rede social onde usuários compartilham informações.
+Modelo
+Uma representação simplificada do sistema real, capturando apenas os aspectos relevantes para nossos
+objetivos de estudo. É nossa abstração da realidade.
+Simulação
+O processo de executar o modelo ao longo do tempo para observar e analisar seu comportamento.
+É onde a mágica acontece!
+Evento
+Qualquer ocorrência que muda o estado do sistema em um ponto específico no tempo. Chegada de
+um pacote, término de um processo, falha de um servidor.
+
+Simulação de Sistemas Computacionais
+4. Validar com dados reais
+5. Simular e analisar resultados
+Modelar é como contar uma história técnica: você escolhe os personagens (entidades), os cenários
+(recursos), os conflitos (eventos) e os desfechos (resultados). A arte está em saber o que incluir e, mais
+importante ainda, o que deixar de fora.
+
+2.2  Tipos de Modelos: Analíticos vs. Simulação
+Chegamos a um dos pontos mais cruciados da disciplina: quando usar cada abordagem? Esta decisão
+impacta diretamente o sucesso do nosso projeto.
+
+01
+Definir o Problema
+Qual pergunta específica queremos responder?
+"Como melhorar o throughput?"
+é melhor que "como otimizar o sistema?"
+02
+Identificar Variáveis
+Quais elementos do sistema real afetam
+diretamente nossos objetivos de estudo?
+04
+Validar com Dados Reais
+Nosso modelo reproduz o comportamento observado
+no sistema real?
+03
+Escolher o Tipo de Modelo
+Analítico (fórmulas matemáticas) ou simulação
+(experimentação computacional)?
+05
+Simular e Analisar
+Executar experimentos e transformar dados em
+insights acionáveis
+Lembrem-se: um modelo perfeito seria idêntico ao sistema real e portanto, inútil!
+A chave é encontrar o nível certo de abstração que capture a essência do problema sem complexidade
+desnecessária.
+Modelos Analíticos
+• Baseados em equações matemáticas exatas
+• Fornecem soluções precisas
+• Ideais para sistemas simples e bem definidos
+• Resultados instantâneos uma vez formulados
+Exemplo: Teoria das Filas (M/M/1)
+
+Simulação de Sistemas Computacionais
+
+1.4 Vantagens e limitações da Simulação
+Vantagens
+- Permite testar cenários sem riscos reais
+- Reduz custos com protótipos físicos
+- Suporta tomada de decisão baseada em dados
+- Pode incorporar variabilidade e incerteza
+- Ideal para sistemas complexos e dinâmicos
+
+Limitações
+- Pode exigir muito tempo de modelagem
+- Resultados dependem da qualidade dos dados
+- Nem sempre fornece solução ótima
+- Requer conhecimento técnico e ferramentas específicas
+
+• Aproximações estatísticas dos resultados
+• Perfeitos para sistemas complexos e dinâmicos
+• Flexíveis para incorporar variabilidade
+• Exemplo: Rede de computadores com múltiplos protocolos
+Sistema Simples
+Poucas variáveis, comportamento
+previsível
+Sistema Complexo
+Muitas interações, comportamento
+emergente
+Na prática, sistemas computacionais modernos tendem a ser complexos, com múltiplas camadas de
+interação, variabilidade estocástica e comportamentos emergentes. Por isso, a simulação computacional
+tornou-se nossa ferramenta principal!
+Modelos de Simulação
+
+Simulação de Sistemas Computacionais
+2.5 Aplicações Reais
+
+Podem ser feitas simulações para diversas áteas do conhecimento, dentre elas:
+- Engenharia: simulação de circuitos, estruturas, fluidos
+- Saúde: treinamento médico com realidade virtual
+- Logística: otimização de rotas e estoques
+- TI: testes de desempenho de redes e servidores
+
+Vejam como ela transforma nossa capacidade de projetar, otimizar e compreender sistemas complexos.
+
+2.6 Ferramentas para Simulação
+
+A simulação computacional permeia praticamente todas as áreas da computação moderna.
+
+Cada uma dessas áreas se beneficia enormemente da simulação, permitindo que testemos algoritmos,
+arquiteturas e estratégias em ambientes controlados antes de implementá-las em sistemas de produção.
+A escolha da ferramenta certa pode fazer a diferença entre o sucesso e o fracasso de um projeto de
+simulação.
+Vamos conhecer as opções disponíveis e quando usar cada uma.
+Python + SimPy
+Excelente para prototipagem rápida e simulações customizadas. SimPy oferece
+capacidades robustas para simulação de eventos discretos com sintaxe intuitiva.
+O padrão ouro para simulação de redes de computadores. Modelos detalhados de protocolos de
+internet, redes sem fio e comunicação móvel.
+NS-3
+
+Simulação de Sistemas Computacionais
+
+2.7 Metodologias
+
+Framework modular poderoso para simulações de rede. Interface gráfica intuitiva e capacidades
+avançadas de visualização e análise.
+OMNeT++
+Ideal para simulação de sistemas dinâmicos e processamento de sinais. Integração perfeita entre
+modelagem, simulação e análise de resultados.
+MATLAB/Simulink
+A escolha da ferramenta depende do domínio do problema, complexidade desejada, recursos disponíveis e
+experiência da equipe. Para nossos projetos acadêmicos, Python + SimPy oferece o melhor equilíbrio entre
+poder e acessibilidade.
+Desenvolver uma simulação eficaz requer seguir uma metodologia rigorosa. Cada etapa tem sua
+importância e pular passos pode levar a resultados incorretos ou inúteis.
+
+Simulação de Sistemas Computacionais
+Referências Bibliográficas
+
+1) Atena Editora. (2023). Engenharia de Computação: Conceitos Fundamentais e Aplicações
+Práticas.
+
+2) BANKS, Jerry et al. Discrete-Event System Simulation. Pearson, 2010.
+
+3) CHWIF, Leonardo; MEDINA, Afonso C. Modelagem e Simulação de Eventos Discretos. São Paulo:
+Bravarte, 2006.
+
+4) Guarienti, G. S. S. (2019). Fundamentos em Sistemas de Computação. Universidade Federal de
+Mato Grosso.
+
+5) Law, A. M., & Kelton, W. D. (2015). Simulation Modeling and Analysis. McGraw-Hill.

@@ -1,0 +1,333 @@
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Disciplina: Simulação de Sistemas Computacionais
+Professor: Ruy Barbosa Figueiredo Junior
+
+I. Introdução
+
+A simulação de sistemas digitais depende fundamentalmente de conceitos estatísticos e probabilísticos
+para modelar comportamentos incertos, como tráfego em redes, tempos de resposta de servidores e
+falhas em sistemas.
+A estatística pode ser aplicada diretamente na simulação de sistemas digitais, desde a geração de dados
+até a análise e validação dos resultados.
+Sistemas reais são cheios de variáveis imprevisíveis — tempo de resposta, falhas, tráfego de rede. A
+estatística permite representar essas incertezas com distribuições de probabilidade (como normal,
+exponencial, binomial), tornando a simulação mais realista.
+Nem sempre temos dados reais suficientes. A estatística permite gerar dados simulados com base em
+parâmetros conhecidos, usando técnicas como amostragem ou geração de números pseudoaleatórios.
+Este material apresenta uma base teórica e prática para aplicar estatística na simulação, utilizando Python
+para exemplos e visualizações.
+
+II. Estatística
+
+Estatística é uma ciência — mais especificamente, uma ciência matemática aplicada que estuda a coleta,
+análise, interpretação e apresentação de dados. Ela é fundamental para a tomada de decisões em
+condições de incerteza e é amplamente aplicada em praticamente todas as áreas do conhecimento.
+A Estatística divide-se em várias áreas interligadas, cada uma com foco específico, para a simulação de
+sistemas computacionais, utilizamos principalmente estas áreas da estatística:
+2.1 Estatística Descritiva
+Objetivo: Resumir, organizar e visualizar dados.
+2.1.1 Medidas de Dispersão
+São valores que representam o centro ou o ponto de equilíbrio de um conjunto de dados. Elas
+resumem a informação de uma distribuição, indicando onde os dados tendem a se concentrar.
+Principais Medidas e Suas Funções:
+Média Aritmética:  Soma de todos os valores dividida pelo número de observações.
+- Fornece um valor "típico" do conjunto.
+- Usada em cálculos estatísticos mais complexos (exemplo: variância, regressão).
+- Melhor uso: Quando os dados são simétricos e sem valores extremos.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Mediana: Valor que divide os dados ordenados em duas partes iguais.
+- Representar o centro em distribuições assimétricas.
+- Não é afetada por valores extremos (outliers).
+- Melhor uso: Para dados com distribuição não normal ou com outliers.
+
+Moda: Valor que ocorre com maior frequência no conjunto.
+- Identificar o valor mais comum.
+- Útil para dados categóricos (exemplo: cor preferida, marca mais popular).
+- Melhor uso: Para variáveis qualitativas ou para detectar picos em distribuições.
+Exemplos:
+Dado um conjunto de dados que representa as idades de um grupo de pessoas, pede-se: Calcule a média
+aritmética, a mediana e a moda.
+
+Média Aritmética
+Soma de todos os valores dividida pelo número de elementos:
+
+Mediana
+Valor central quando os dados estão ordenados:
+
+Moda
+Valor que aparece com maior frequência:
+
+Limitações e Cuidados
+- Média: Sensível a valores extremos.
+- Mediana: Ignora a magnitude de valores extremos.
+- Moda: Pode não ser única ou representativa se houver múltiplos picos.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+2.1.2 Medidas de Dispersão
+As medidas de dispersão são indicadores estatísticos que quantificam o quanto os dados de um
+conjunto variam entre si. Elas complementam as medidas de tendência central (como média e
+mediana), mostrando se os valores estão concentrados ou espalhados.
+Servem para:
+• Entender a Variabilidade dos Dados:
+Revelam se os valores são homogêneos (pouca variação) ou heterogêneos (muita variação).
+Exemplo: Em um servidor web, tempos de resposta muito variáveis podem indicar
+instabilidade.
+
+• Comparar Conjuntos de Dados:
+Permitem comparar a dispersão de diferentes amostras ou populações.
+Exemplo: Comparar a consistência do tempo de resposta de dois servidores.
+
+• Tomar Decisões com Base na Incerteza:
+Em simulação de sistemas, ajudam a avaliar riscos e prever comportamentos extremos.
+Exemplo: Planejar capacidade de hardware para lidar com picos de tráfego.
+
+• Validar Modelos Estatísticos:
+Distribuições com alta dispersão podem exigir ajustes nos modelos de simulação.
+
+Principais medidas de dispersão:
+
+Variância: Mede a média dos quadrados das diferenças entre cada valor e a média.
+Fórmula (amostral):
+
+Interpretação: Quanto maior a variância, mais dispersos os dados.
+
+Desvio Padrão “ σ “ :  É a raiz quadrada da variância.
+- Vantagem: Está na mesma unidade dos dados original.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Em Python
+
+Amplitude: Diferença entre o maior e o menor valor do conjunto.
+- Limitação: Sensível a valores extremos (outliers).
+Em Python: Notas de uma turma em uma prova
+notas = [68, 72, 75, 78, 80, 82, 85, 88, 90, 95]
+
+Cálculo da amplitude:
+
+Limitações:
+
+Problema: A amplitude aumentou de 27 para 95 pontos devido a um único valor extremo, distorcendo
+completamente a percepção da dispersão real dos dados.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Coeficiente de Variação (CV): Relaciona o desvio padrão à média (em porcentagem).
+- Fórmula:
+
+- Uso: Comparar dispersão entre conjuntos com unidades ou médias diferentes.  É a ferramenta ideal
+quando você precisa responder: "Esta variação é grande em relação ao que estamos medindo?"
+
+Em Python
+
+Isso significa que o desvio padrão é aproximadamente 28,88% da média, indicando uma variabilidade
+relativa moderada.
+
+Observação: O coeficiente de variação é mais útil quando os dados são sempre positivos (média > 0) e
+quando a distribuição é aproximadamente normal ou simétrica.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Exemplo Prático em Simulação de Sistemas:
+
+Suponha que você está analisando o tempo de resposta de um servidor (em milissegundos):
+- Amostra 1: [100, 105, 98, 102, 101]
+- Amostra 2: [80, 120, 90, 110, 100]
+
+Apresente os códigos para o cálculo da média aritmética, variância, desvio padrão e coeficiente de
+variação. Faça a análise dos resultados e indique qual amostra representa um sistema mais estável e qual
+amostra representa um comportamento imprevisível do sistema?
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Gráfico de Visualização
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Interpretação do Boxplot:
+- As caixas mostram a dispersão (quartis).
+- Amostra 2 tem maior amplitude e outliers.
+
+Quartis são como “marcadores de posição” que dividem um conjunto de dados ordenados em quatro
+partes iguais. Eles ajudam a entender como os dados estão distribuídos — especialmente se há
+concentração, dispersão ou outliers.
+
+Imagine que você tem uma fila de números ordenados. Os quartis dividem essa fila em quatro partes com
+25% dos dados em cada uma:
+
+- Q1 (primeiro quartil): marca o ponto abaixo do qual estão os 25% menores valores.
+- Q2 (segundo quartil): é a mediana, ou seja, o valor central (50% dos dados abaixo).
+- Q3 (terceiro quartil): marca o ponto abaixo do qual estão 75% dos dados.
+
+Exemplo prático
+
+Suponha os dados:
+[10, 12, 15, 18, 20, 22, 25, 28]
+Q1 = 13.5 → 25% dos dados estão abaixo disso
+- Q2 = 19 → é a mediana
+- Q3 = 23.5 → 75% dos dados estão abaixo disso
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+
+Importância dos gráficos na simulação de sistemas computacionais:
+- Identificar distribuição dos dados.
+- Detectar outliers (valores muito fora da curva)
+- Construir boxplots (gráficos que resumem os dados visualmente)
+- Análise da precisão de modelos: Distribuições com alta dispersão (ex: Exponencial) exigem mais
+amostras para simulações confiáveis.
+- Otimização de Recursos: Identificar se um sistema tem variação excessiva ajuda a priorizar melhorias.
+- Análise de Risco: Medidas como desvio padrão preveem cenários de pico e falhas.
+
+Limitações e Cuidados
+- Média: Sensível a valores extremos.
+- Mediana: Ignora a magnitude de valores extremos.
+- Moda: Pode não ser única ou representativa se houver múltiplos picos.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+2.2 Estatística Inferencial
+A estatística inferencial é o ramo da estatística que permite tirar conclusões sobre uma população com
+base na análise de amostras dessa população. Em vez de apenas descrever os dados (como faz a
+estatística descritiva), ela busca inferir padrões, testar hipóteses e estimar parâmetros com base em
+modelos probabilísticos.
+Ela vai além da simples descrição dos dados para fazer generalizações e previsões.
+Na simulação de sistemas — como redes de computadores, fábricas, sistemas logísticos ou financeiros —
+a estatística inferencial é essencial para garantir que os resultados obtidos sejam confiáveis e
+generalizáveis.
+
+2.2.1. Conceitos Fundamentais
+População X Amostra
+População:
+• Refere-se ao conjunto total de elementos que possuem uma característica comum e que são
+objeto de estudo.
+• Pode ser composta por pessoas, objetos, eventos, ou qualquer unidade de análise.
+Exemplos:
+- Todos os eleitores de Belo Horizonte.
+- Todas as escolas particulares de Minas Gerais.
+- Todos os carros fabricados por uma montadora em 2024.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Amostra:
+• É um subconjunto da população, selecionado para representar o todo.
+• Usada quando estudar a população inteira seria inviável por tempo, custo ou logística.
+• Deve ser escolhida de forma que represente fielmente a população para garantir validade
+estatística.
+Exemplos:
+- 500 eleitores de BH entrevistados numa pesquisa eleitoral.
+- 30 escolas particulares analisadas para avaliar desempenho educacional.
+
+A ideia é que, ao estudar a amostra, você possa inferir conclusões sobre a população com um certo grau
+de confiança estatística.
+
+Parâmetros e Estatísticas
+- Parâmetro: valor que descreve uma característica da população (exemplo: média populacional).
+- Estatística: valor calculado a partir da amostra (exemplo: média amostral).
+
+Estimativas
+- Estimativa pontual: um único valor que estima um parâmetro (exemplo: média da amostra como
+estimativa da média populacional).
+- Intervalo de confiança: faixa de valores que provavelmente contém o parâmetro populacional, com um
+certo nível de confiança (exemplo: 95%).
+
+Testes de Hipóteses
+- Método para verificar se uma afirmação sobre a população é plausível com base nos dados da amostra.
+- Envolve:
+- Hipótese nula (H₀): afirmação inicial (exemplo: “não há diferença”).
+- Hipótese alternativa (H₁): o que queremos provar (exemplo: “há diferença”).
+- Valor-p: probabilidade de obter os resultados observados se H₀ for verdadeira.
+- Nível de significância (α): geralmente 0,05; se o valor-p for menor que α, rejeitamos H₀.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Erros Estatísticos
+- Erro Tipo I (α): rejeitar H₀ quando ela é verdadeira.
+- Erro Tipo II (β): não rejeitar H₀ quando ela é falsa.
+
+Distribuições de Probabilidade
+- Modelos matemáticos que descrevem como os dados se comportam.
+- Exemplo clássico: distribuição normal, usada em muitos testes estatísticos.
+
+Parâmetro x Estatística:
+
+- Parâmetro: Média descritiva da população - μ (mi) é usado quando estamos lidando com parâmetros
+populacionais, ou seja, quando queremos descrever toda a população.
+- Estatística x̄ (x barra): Medida descritiva da amostra - é usado quando calculamos a média com base em
+uma amostra retirada da população.
+
+Intervalo de Confiança
+Um intervalo de confiança é uma faixa de valores que, com determinada probabilidade (chamada de nível
+de confiança), contém o verdadeiro valor do parâmetro populacional.
+Por exemplo:
+Se você calcular um intervalo de confiança de 95% para a média de altura de uma população, isso significa
+que há 95% de confiança de que esse intervalo inclui a verdadeira média populacional.
+Exemplo Prático:
+Suponha que você tenha uma amostra de 10 pessoas com média de altura de 171,4 cm e um intervalo de
+confiança de 95% calculado como (168,8 cm, 174,0 cm). Isso quer dizer:
+Estamos 95% confiantes de que a média real da população está entre 168,8 cm e 174,0 cm.
+Interpretação Correta:
+“Estamos 95% confiantes de que o intervalo calculado contém o verdadeiro valor.”
+Não se deve dizer que “há 95% de chance de que o valor esteja dentro do intervalo”, porque o valor
+populacional é fixo — o que varia é o intervalo, dependendo da amostra.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Aplicações em Python
+Exemplo 01:
+
+Vamos analisar o algoritmo:
+1. Define uma amostra de alturas (em cm).
+2. Calcula a média amostral com np.mean().
+3. Calcula o erro padrão da média com stats.sem() — essencial para medir a variabilidade da média.
+4. Constrói um intervalo de confiança de 95% usando a distribuição t de Student, já que o tamanho da
+amostra é pequeno (n < 30).
+Ou seja, com 95% de confiança, podemos afirmar que a média populacional está entre 168,10 cm e
+172,69 cm, com base nessa amostra.
+Por que usar a distribuição t?
+Porque:
+- A amostra é pequena.
+- A variância populacional é desconhecida.
+- A distribuição t é mais conservadora, ajustando-se ao tamanho da amostra.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+Exemplo 02:
+
+O algoritmo compara as médias dos grupos (método tradicional) e (novo método) para verificar se o novo
+método produz resultados significativamente diferentes.
+Passo a Passo do Algoritmo
+1. Definição das amostras
+
+Cada lista representa as notas de alunos submetidos a diferentes métodos de ensino.
+
+2. Aplicação do teste t para amostras independentes
+
+• stats.ttest_ind() realiza o teste t de Student para verificar se as médias dos dois grupos são
+estatisticamente diferentes.
+• Retorna:
+- t_stat: valor da estatística t.
+- p_valor: probabilidade de observar essa diferença se H₀ (hipótese nula) for verdadeira.
+
+3. Exibição dos resultados
+
+- Mostra os valores calculados com 3 casas decimais.
+
+Estatística: Conceitos e Aplicação à
+Simulação de Sistemas Digitais
+4. Interpretação estatística
+
+Nível de significância (α): 0,05 (ou 5%).
+- Se o valor-p for menor que 0,05, rejeitamos a hipótese nula e concluímos que há diferença significativa
+entre os métodos.
+Como o valor-p (0.058) é maio que 0.05, não há evidência estatística de que os métodos produzem
+médias diferentes.
