@@ -3,81 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Completo - Programação Web</title>
+    <title>Revisão Completa - Programação Web</title>
     <style>
         :root {
+            --bg: #f5f8ff;
             --text: #1f2937;
             --card: #ffffff;
-            --primary: #2563eb;
-            --secondary: #0f766e;
-            --accent: #f59e0b;
-            --border: #dbe4f0;
-            --soft: #f8fbff;
+            --line: #dbe4f0;
+            --primary: #0f4ea8;
+            --secondary: #0b7a6f;
+            --warn: #f59e0b;
+            --soft-blue: #eff6ff;
+            --soft-green: #ecfeff;
+            --soft-orange: #fff7ed;
         }
+
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #eef4ff, #f8fafc);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(160deg, #edf3ff 0%, #f8fbff 52%, #eefbf9 100%);
             color: var(--text);
             line-height: 1.65;
         }
+
         header {
-            background: linear-gradient(135deg, #1d4ed8, #0f766e);
-            color: white;
-            padding: 36px 20px;
+            background: linear-gradient(135deg, #0f4ea8, #0b7a6f);
+            color: #fff;
+            padding: 34px 18px;
         }
-        .wrap { max-width: 1180px; margin: 0 auto; }
-        .subtitle { max-width: 840px; opacity: 0.96; }
-        section {
-            background: var(--card);
-            margin: 18px auto;
-            padding: 22px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
         }
-        h1, h2, h3 { margin-top: 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-        .card {
-            background: var(--soft);
-            border-left: 4px solid var(--primary);
-            padding: 14px;
-            border-radius: 12px;
+
+        .subtitle {
+            max-width: 900px;
+            opacity: 0.95;
         }
+
         .tag {
             display: inline-block;
-            padding: 6px 10px;
             margin: 4px 6px 0 0;
+            padding: 6px 10px;
             border-radius: 999px;
-            background: #e0ecff;
-            color: #123b8f;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #ffffffdb;
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--line);
+            z-index: 10;
+        }
+
+        nav .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 14px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            border: 1px solid #cfe0ff;
+            background: #f4f8ff;
+            border-radius: 999px;
+            padding: 6px 11px;
+            font-weight: 600;
             font-size: 0.92rem;
         }
-        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; vertical-align: top; }
-        th { background: #eff6ff; }
-        a { color: var(--primary); text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
+
+        main {
+            padding: 8px 0 24px;
+        }
+
+        section {
+            background: var(--card);
+            margin: 16px 0;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 8px 18px rgba(17, 24, 39, 0.06);
+        }
+
+        h1, h2, h3, h4 { margin-top: 0; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+        }
+
+        .card.soft {
+            background: var(--soft-blue);
+        }
+
+        .ok {
+            background: var(--soft-green);
+            border-left: 4px solid var(--secondary);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .warning {
+            background: var(--soft-orange);
+            border-left: 4px solid var(--warn);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
         pre {
             background: #0f172a;
             color: #dbeafe;
-            padding: 12px;
+            padding: 13px;
             border-radius: 10px;
             overflow-x: auto;
             white-space: pre-wrap;
         }
-        .warning, .note {
-            padding: 14px;
-            border-radius: 10px;
+
+        code {
+            background: #eef2ff;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 10px;
         }
-        .warning { background: #fff7ed; border-left: 4px solid var(--accent); }
-        .note { background: #ecfeff; border-left: 4px solid var(--secondary); }
+
+        th, td {
+            border: 1px solid var(--line);
+            text-align: left;
+            padding: 9px;
+            vertical-align: top;
+        }
+
+        th { background: #f1f6ff; }
+
+        a {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        details {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fcfdff;
+            padding: 10px 12px;
+            margin-top: 10px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
         @media (max-width: 768px) {
-            header { padding: 24px 16px; }
-            section { margin: 14px 10px; padding: 16px; }
+            header { padding: 24px 14px; }
+            section { padding: 16px; margin: 12px 10px; }
+            nav .wrap { padding: 9px 10px; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -85,315 +189,381 @@
 <body>
     <header>
         <div class="wrap">
-            <h1>Guia Completo de Programação Web</h1>
-            <p class="subtitle">Material ampliado a partir dos arquivos feitos em aula e reforçado com os assuntos mais prováveis para prova: estrutura HTML, links, listas, tabelas, formulários, CSS, seletores, responsividade, @media e boas práticas.</p>
-            <span class="tag">HTML</span>
-            <span class="tag">Formulários</span>
+            <h1>Revisão Completa de Programação Web</h1>
+            <p class="subtitle">Este index foi atualizado com tudo que estava faltando com base na pasta Material de Aula e nas atividades da pasta class. A ideia aqui é ser seu resumo final para prova: objetivo, direto e explicativo.</p>
+            <span class="tag">HTML básico e HTML5</span>
+            <span class="tag">Listas, Links, Imagens</span>
             <span class="tag">Tabelas</span>
-            <span class="tag">CSS</span>
-            <span class="tag">@media</span>
-            <span class="tag">Responsividade</span>
+            <span class="tag">Formulários + Inputs HTML5</span>
+            <span class="tag">CSS propriedades e seletores</span>
+            <span class="tag">Design responsivo</span>
         </div>
     </header>
 
+    <nav>
+        <div class="wrap">
+            <a href="#roteiro">Roteiro 60 min</a>
+            <a href="#materiais">Mapa dos Materiais</a>
+            <a href="#praticas">Práticas da Turma</a>
+            <a href="#html">HTML e HTML5</a>
+            <a href="#formularios">Formulários</a>
+            <a href="#css">CSS</a>
+            <a href="#responsivo">Responsivo</a>
+            <a href="#erros">Erros comuns</a>
+            <a href="#checklist">Checklist final</a>
+        </div>
+    </nav>
+
     <main class="wrap">
-        <section>
-            <h2>1) O que você já praticou na pasta</h2>
+        <section id="roteiro">
+            <h2>1) Roteiro rápido de revisão (60 minutos)</h2>
+            <ol>
+                <li><strong>10 min:</strong> estrutura HTML + tags principais + semântica.</li>
+                <li><strong>10 min:</strong> listas, links, imagens e tabelas.</li>
+                <li><strong>15 min:</strong> formulários (GET x POST, name, label, input types).</li>
+                <li><strong>15 min:</strong> CSS (formas de uso, seletores, box model, especificidade).</li>
+                <li><strong>10 min:</strong> responsividade com <code>@media</code> e erros clássicos.</li>
+            </ol>
+            <div class="ok">Se bater nervosismo, volte para as seções "Checklist final" e "Perguntas prováveis". Elas foram feitas para revisão de última hora.</div>
+        </section>
+
+        <section id="materiais">
+            <h2>2) Mapa completo da pasta Material de Aula</h2>
+            <p>Aqui está o conteúdo organizado por arquivo para você saber exatamente o que caiu ao longo da disciplina.</p>
+            <table>
+                <tr>
+                    <th>Arquivo</th>
+                    <th>Tópico principal para revisar</th>
+                    <th>Abrir</th>
+                </tr>
+                <tr>
+                    <td>00 - Apresentação do Curso.pdf</td>
+                    <td>Objetivos da disciplina, lógica da avaliação e panorama do desenvolvimento web.</td>
+                    <td><a href="Material de Aula/00 - Apresentação do Curso.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>01 - Introdução.pdf</td>
+                    <td>Conceitos iniciais: web, navegador, cliente-servidor, páginas estáticas.</td>
+                    <td><a href="Material de Aula/01 - Introdução.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>02 - HTML.pdf</td>
+                    <td>Estrutura base do HTML, tags iniciais, atributos e organização do documento.</td>
+                    <td><a href="Material de Aula/02 - HTML.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>02 - html5-web.pdf</td>
+                    <td>Recursos do HTML5 e semântica moderna.</td>
+                    <td><a href="Material de Aula/02 - html5-web.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>02 - New HTML5 Form Input Types.zip</td>
+                    <td>Novos tipos de <code>input</code> do HTML5 (email, date, url, tel, color etc.).</td>
+                    <td><a href="Material de Aula/02 - New HTML5 Form Input Types.zip" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>03 - HTML - Listas, Links e imagens.pdf</td>
+                    <td>Âncoras, links internos/externos, listas ordenadas/não ordenadas e imagens.</td>
+                    <td><a href="Material de Aula/03 - HTML - Listas, Links e imagens.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>04 - HTML - Tabelas.pdf</td>
+                    <td>Estrutura de tabelas: <code>table</code>, <code>tr</code>, <code>th</code>, <code>td</code>, <code>colspan</code>, <code>rowspan</code>.</td>
+                    <td><a href="Material de Aula/04 - HTML - Tabelas.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>05 - HTML - Formularios e controles.pdf</td>
+                    <td>Formulários e controles: <code>form</code>, <code>input</code>, <code>select</code>, <code>textarea</code>, envio de dados.</td>
+                    <td><a href="Material de Aula/05 - HTML - Formularios e controles.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>07 - CSS.pdf</td>
+                    <td>Introdução ao CSS, sintaxe, formas de aplicação e conceitos iniciais.</td>
+                    <td><a href="Material de Aula/07 - CSS.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>08 - CSS - continuação.pdf</td>
+                    <td>Continuação de CSS, seletores e composição de regras.</td>
+                    <td><a href="Material de Aula/08 - CSS - continuação.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>09 - CSS - propriedades.pdf</td>
+                    <td>Propriedades de texto, cor, fundo, borda, espaçamento e layout.</td>
+                    <td><a href="Material de Aula/09 - CSS - propriedades.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>10 - CSS - Design - Responsivo.pdf</td>
+                    <td>Design responsivo, viewport, breakpoints e adaptação para celular.</td>
+                    <td><a href="Material de Aula/10 - CSS - Design - Responsivo.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>10 - Exercicio CSS.pdf</td>
+                    <td>Exercícios aplicados para fixação de CSS.</td>
+                    <td><a href="Material de Aula/10 - Exercicio CSS.pdf" target="_blank">Abrir</a></td>
+                </tr>
+                <tr>
+                    <td>10 - Trabalho SITE.pdf</td>
+                    <td>Aplicação integrada de HTML + CSS em um site completo.</td>
+                    <td><a href="Material de Aula/10 - Trabalho SITE.pdf" target="_blank">Abrir</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="praticas">
+            <h2>3) O que você já praticou na pasta class</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>Aula 11/03</h3>
-                    <p>Estrutura básica, links, imagens, listas e navegação.</p>
-                    <p><a href="class/11_03/11_03.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>11/03 - Base de HTML</h3>
+                    <p>Linkagem entre páginas, imagem, títulos e organização geral.</p>
+                    <p><a href="class/11_03/11_03.html" target="_blank">Abrir atividade</a></p>
                 </div>
                 <div class="card">
-                    <h3>Listas</h3>
-                    <p>Lista ordenada, glossário, âncoras e links internos.</p>
-                    <p><a href="class/11_03/lista.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>11/03 - Listas</h3>
+                    <p>Listas ordenadas e uso de âncoras internas.</p>
+                    <p><a href="class/11_03/lista.html" target="_blank">Abrir atividade</a></p>
                 </div>
                 <div class="card">
-                    <h3>Tabelas</h3>
-                    <p>table, tr, th, colspan, alinhamento e quebra de linha.</p>
-                    <p><a href="class/11_03/table.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>11/03 - Tabelas</h3>
+                    <p>Uso de <code>colspan</code>, alinhamento e conteúdo em células.</p>
+                    <p><a href="class/11_03/table.html" target="_blank">Abrir atividade</a></p>
                 </div>
                 <div class="card">
-                    <h3>Formulários</h3>
-                    <p>GET, POST, input, textarea, checkbox, radio e select.</p>
-                    <p><a href="class/18_03/formulario.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>18/03 - Formulários</h3>
+                    <p>GET/POST, campos de texto, senha, number, checkbox e select.</p>
+                    <p><a href="class/18_03/formulario.html" target="_blank">Abrir atividade</a></p>
                 </div>
                 <div class="card">
-                    <h3>Reserva</h3>
-                    <p>Formulário completo com vários campos.</p>
-                    <p><a href="class/18_03/18_03.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>18/03 - Reserva</h3>
+                    <p>Formulário maior com cidade, estado, preferências e sugestão.</p>
+                    <p><a href="class/18_03/18_03.html" target="_blank">Abrir atividade</a></p>
                 </div>
                 <div class="card">
-                    <h3>CSS</h3>
-                    <p>Seletores, classes, IDs, prioridade e estilo externo.</p>
-                    <p><a href="class/25_03/index.html" target="_blank">Abrir arquivo</a></p>
+                    <h3>25/03 - CSS</h3>
+                    <p>Seletores por elemento, classe e ID, além de <code>!important</code>.</p>
+                    <p><a href="class/25_03/index.html" target="_blank">Abrir atividade</a></p>
+                </div>
+                <div class="card soft">
+                    <h3>01/04 - Espaço para prática</h3>
+                    <p>A pasta está pronta para você treinar exercícios finais de revisão.</p>
+                    <p><a href="class/01-04/index.html" target="_blank">Abrir arquivo base</a></p>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>2) Estrutura básica de um documento HTML</h2>
+        <section id="html">
+            <h2>4) HTML e HTML5 - explicação de prova</h2>
+            <h3>4.1 Estrutura mínima correta</h3>
             <pre>&lt;!DOCTYPE html&gt;
 &lt;html lang="pt-BR"&gt;
 &lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Título da Página&lt;/title&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;Minha Página&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  Conteúdo visível ao usuário
+  Conteúdo da página
 &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <ul>
-                <li><strong>head:</strong> metadados, título, CSS e configurações.</li>
-                <li><strong>body:</strong> tudo que aparece na página.</li>
-                <li><strong>title:</strong> nome que aparece na aba do navegador.</li>
-            </ul>
-        </section>
 
-        <section>
-            <h2>3) Tags HTML mais importantes</h2>
+            <h3>4.2 Tags essenciais e função</h3>
             <table>
                 <tr>
                     <th>Tag</th>
                     <th>Função</th>
                 </tr>
-                <tr>
-                    <td>h1 até h6</td>
-                    <td>Títulos e subtítulos</td>
-                </tr>
-                <tr>
-                    <td>p</td>
-                    <td>Parágrafo</td>
-                </tr>
-                <tr>
-                    <td>a</td>
-                    <td>Link</td>
-                </tr>
-                <tr>
-                    <td>img</td>
-                    <td>Imagem</td>
-                </tr>
-                <tr>
-                    <td>ol / ul / li</td>
-                    <td>Listas</td>
-                </tr>
-                <tr>
-                    <td>table / tr / th / td</td>
-                    <td>Tabelas</td>
-                </tr>
-                <tr>
-                    <td>form</td>
-                    <td>Formulário</td>
-                </tr>
+                <tr><td>h1 a h6</td><td>Títulos e hierarquia do conteúdo.</td></tr>
+                <tr><td>p</td><td>Parágrafo de texto.</td></tr>
+                <tr><td>a</td><td>Link interno ou externo.</td></tr>
+                <tr><td>img</td><td>Exibir imagem (sempre use <code>alt</code>).</td></tr>
+                <tr><td>ol / ul / li</td><td>Listas ordenadas e não ordenadas.</td></tr>
+                <tr><td>table / tr / th / td</td><td>Dados em formato tabular.</td></tr>
+                <tr><td>form</td><td>Coletar dados do usuário.</td></tr>
             </table>
-        </section>
 
-        <section>
-            <h2>4) Links, imagens e listas</h2>
+            <h3>4.3 Semântica no HTML5</h3>
+            <p>Em HTML5, além de funcionar, a página precisa fazer sentido estrutural. Tags semânticas melhoram leitura, SEO e acessibilidade.</p>
             <div class="grid">
-                <div class="card">
-                    <h3>Links</h3>
-                    <pre>&lt;a href="pagina.html"&gt;Abrir&lt;/a&gt;</pre>
-                    <p>Use <strong>target="_blank"</strong> para abrir em nova aba.</p>
-                </div>
-                <div class="card">
-                    <h3>Imagem</h3>
-                    <pre>&lt;img src="foto.jpg" alt="Descrição"&gt;</pre>
-                    <p>O atributo alt ajuda acessibilidade e descrição da imagem.</p>
-                </div>
-                <div class="card">
-                    <h3>Listas</h3>
-                    <pre>&lt;ol&gt;
-  &lt;li&gt;Item&lt;/li&gt;
-&lt;/ol&gt;</pre>
-                    <p><strong>ol</strong> é ordenada e <strong>ul</strong> é não ordenada.</p>
-                </div>
+                <div class="card"><h4>header</h4><p>Cabeçalho da página/seção.</p></div>
+                <div class="card"><h4>nav</h4><p>Menu de navegação.</p></div>
+                <div class="card"><h4>main</h4><p>Conteúdo principal.</p></div>
+                <div class="card"><h4>section</h4><p>Bloco temático de conteúdo.</p></div>
+                <div class="card"><h4>article</h4><p>Conteúdo independente.</p></div>
+                <div class="card"><h4>footer</h4><p>Rodapé da página/seção.</p></div>
             </div>
         </section>
 
-        <section>
-            <h2>5) Tabelas</h2>
-            <p>As tabelas organizam dados em linhas e colunas.</p>
-            <pre>&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Nome&lt;/th&gt;
-    &lt;th&gt;Idade&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Ana&lt;/td&gt;
-    &lt;td&gt;20&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;</pre>
-            <ul>
-                <li><strong>tr:</strong> linha</li>
-                <li><strong>th:</strong> célula de cabeçalho</li>
-                <li><strong>td:</strong> célula comum</li>
-                <li><strong>colspan:</strong> ocupa várias colunas</li>
-                <li><strong>rowspan:</strong> ocupa várias linhas</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>6) Formulários: assunto muito provável</h2>
+        <section id="formularios">
+            <h2>5) Formulários e controles (ponto forte da prova)</h2>
+            <h3>5.1 Estrutura padrão</h3>
             <pre>&lt;form action="resposta.php" method="post"&gt;
-  &lt;label for="nome"&gt;Nome:&lt;/label&gt;
-  &lt;input type="text" name="nome" id="nome"&gt;
-  &lt;input type="submit" value="Enviar"&gt;
-&lt;/form&gt;</pre>
-            <div class="grid">
-                <div class="card">
-                    <h3>Tipos comuns de input</h3>
-                    <ul>
-                        <li>text</li>
-                        <li>password</li>
-                        <li>number</li>
-                        <li>radio</li>
-                        <li>checkbox</li>
-                        <li>submit</li>
-                        <li>reset</li>
-                        <li>button</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Outros elementos</h3>
-                    <ul>
-                        <li>label</li>
-                        <li>textarea</li>
-                        <li>select</li>
-                        <li>option</li>
-                        <li>fieldset</li>
-                        <li>legend</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+  &lt;label for="nome"&gt;Nome&lt;/label&gt;
+  &lt;input id="nome" name="nome" type="text" required /&gt;
 
-        <section>
-            <h2>7) GET x POST</h2>
+  &lt;label for="email"&gt;E-mail&lt;/label&gt;
+  &lt;input id="email" name="email" type="email" /&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</pre>
+
+            <h3>5.2 GET x POST</h3>
             <table>
                 <tr>
                     <th>Método</th>
-                    <th>Quando usar</th>
-                    <th>Observação</th>
+                    <th>Uso comum</th>
+                    <th>Como vai o dado</th>
                 </tr>
                 <tr>
                     <td>GET</td>
-                    <td>Consulta, pesquisa e filtros</td>
-                    <td>Dados aparecem na URL</td>
+                    <td>Busca, filtro, consulta</td>
+                    <td>Parâmetros aparecem na URL</td>
                 </tr>
                 <tr>
                     <td>POST</td>
-                    <td>Cadastro, login, envio de dados</td>
+                    <td>Cadastro, login, envio sensível</td>
                     <td>Dados vão no corpo da requisição</td>
                 </tr>
             </table>
-        </section>
 
-        <section>
-            <h2>8) CSS: formas de uso</h2>
+            <h3>5.3 Inputs que você precisa lembrar</h3>
             <div class="grid">
                 <div class="card">
-                    <h3>Inline</h3>
-                    <p>Direto na tag com o atributo style.</p>
+                    <h4>Tipos clássicos</h4>
+                    <ul>
+                        <li>text, password, number</li>
+                        <li>radio, checkbox</li>
+                        <li>submit, reset, button</li>
+                        <li>textarea, select, option</li>
+                        <li>fieldset, legend, datalist</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3>Interno</h3>
-                    <p>Dentro da tag style no head.</p>
+                    <h4>Tipos HTML5 (do ZIP)</h4>
+                    <ul>
+                        <li>email, url, tel</li>
+                        <li>date, month, week, time</li>
+                        <li>datetime-local</li>
+                        <li>color, range, search</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3>Externo</h3>
-                    <p>Arquivo separado .css, que é a melhor prática na maioria dos casos.</p>
+                    <h4>Atributos importantes</h4>
+                    <ul>
+                        <li>name: nome da variável enviada</li>
+                        <li>id: identificação no HTML/CSS</li>
+                        <li>placeholder: dica visual</li>
+                        <li>required: obrigatório</li>
+                        <li>readonly x disabled: readonly envia, disabled não envia</li>
+                        <li>min, max, maxlength, step</li>
+                    </ul>
                 </div>
             </div>
-            <pre>p { color: blue; }
-.destaque { color: green; }
-#titulo { color: red; }</pre>
         </section>
 
-        <section>
-            <h2>9) Seletores e especificidade</h2>
+        <section id="css">
+            <h2>6) CSS completo para revisão</h2>
+            <h3>6.1 Formas de aplicar CSS</h3>
             <ul>
-                <li><strong>Elemento:</strong> seleciona todas as tags daquele tipo. Ex.: p</li>
-                <li><strong>Classe:</strong> pode ser reutilizada em vários elementos. Ex.: .caixa</li>
-                <li><strong>ID:</strong> deve ser único na página. Ex.: #menu</li>
+                <li><strong>Inline:</strong> na própria tag com <code>style="..."</code>.</li>
+                <li><strong>Interno:</strong> bloco <code>&lt;style&gt;</code> no <code>&lt;head&gt;</code>.</li>
+                <li><strong>Externo:</strong> arquivo <code>.css</code> separado com <code>&lt;link&gt;</code> (mais usado e organizado).</li>
             </ul>
-            <div class="note">Prioridade comum: <strong>ID &gt; classe &gt; elemento</strong>. O uso de <strong>!important</strong> deve ser raro.</div>
-        </section>
 
-        <section>
-            <h2>10) Box model e layout</h2>
-            <p>Todo elemento HTML pode ser pensado como uma caixa.</p>
-            <ul>
-                <li><strong>content:</strong> conteúdo</li>
-                <li><strong>padding:</strong> espaço interno</li>
-                <li><strong>border:</strong> borda</li>
-                <li><strong>margin:</strong> espaço externo</li>
-            </ul>
+            <h3>6.2 Seletores e prioridade</h3>
+            <pre>p { color: blue; }        /* seletor por elemento */
+.destaque { color: green; } /* seletor por classe */
+#titulo { color: red; }      /* seletor por ID */</pre>
+            <div class="ok">Regra importante: ID &gt; Classe &gt; Elemento. O <code>!important</code> ganha de quase tudo, mas deve ser usado com cuidado.</div>
+
+            <h3>6.3 Propriedades que mais aparecem</h3>
+            <table>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Propriedades</th>
+                </tr>
+                <tr>
+                    <td>Texto</td>
+                    <td>color, font-family, font-size, font-weight, text-align</td>
+                </tr>
+                <tr>
+                    <td>Caixa</td>
+                    <td>width, height, margin, padding, border, border-radius</td>
+                </tr>
+                <tr>
+                    <td>Fundo</td>
+                    <td>background-color, background-image, background-repeat</td>
+                </tr>
+                <tr>
+                    <td>Layout</td>
+                    <td>display, position, flex, grid</td>
+                </tr>
+            </table>
+
+            <h3>6.4 Box Model (sempre cai)</h3>
             <pre>.caixa {
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #000;
+  margin: 10px;   /* espaço externo */
+  border: 1px solid #111;
+  padding: 20px;  /* espaço interno */
 }</pre>
         </section>
 
-        <section>
-            <h2>11) Responsividade e @media</h2>
-            <p>Responsividade é fazer o site se adaptar ao tamanho da tela. Esse assunto tem grande chance de aparecer porque já conversa com o conteúdo de CSS.</p>
+        <section id="responsivo">
+            <h2>7) Design responsivo</h2>
+            <p>Responsivo é adaptar o conteúdo para diferentes telas, especialmente celular. Você já usou isso no próprio index atual com grid e media query.</p>
             <pre>@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
   .grid {
     grid-template-columns: 1fr;
   }
+
+  body {
+    font-size: 15px;
+  }
 }</pre>
             <ul>
-                <li><strong>max-width: 768px</strong> significa: aplicar as regras em telas menores.</li>
-                <li>É muito usado para celular.</li>
-                <li>Ajuda a evitar site quebrado em telas pequenas.</li>
+                <li><code>meta viewport</code> é obrigatório para layout mobile correto.</li>
+                <li><code>max-width</code> em imagens evita estourar a tela.</li>
+                <li>Use medidas relativas quando possível: %, rem, vw.</li>
             </ul>
         </section>
 
-        <section>
-            <h2>12) Erros comuns que a prova pode explorar</h2>
+        <section id="erros">
+            <h2>8) Erros clássicos que professor costuma cobrar</h2>
             <div class="warning">
                 <ul>
-                    <li>Usar tags inválidas, como h999.</li>
-                    <li>Colocar heading dentro de p.</li>
-                    <li>Escrever atributo errado, como nome no lugar de name.</li>
-                    <li>Duplicar o mesmo id em vários elementos.</li>
-                    <li>Escrever meta viewport incorretamente.</li>
-                    <li>Esquecer label em campos de formulário.</li>
+                    <li>Escrever atributo errado: usar <code>nome</code> em vez de <code>name</code> no input.</li>
+                    <li>Meta viewport com digitação incorreta, por exemplo <code>devide-width</code>.</li>
+                    <li>Duplicar o mesmo <code>id</code> em elementos diferentes.</li>
+                    <li>Colocar heading (<code>h1</code>, <code>h2</code>) dentro de <code>p</code>.</li>
+                    <li>Usar <code>disabled</code> achando que o valor será enviado no form.</li>
+                    <li>Esquecer <code>label</code>, prejudicando acessibilidade e foco.</li>
                 </ul>
             </div>
+            <details>
+                <summary>Perguntas prováveis de prova</summary>
+                <ol>
+                    <li>Monte a estrutura básica de um HTML válido.</li>
+                    <li>Explique a diferença entre GET e POST com exemplo.</li>
+                    <li>Crie uma tabela com título e duas linhas de dados.</li>
+                    <li>Monte um formulário com nome, email, senha e botão enviar.</li>
+                    <li>Diferencie seletor por elemento, classe e ID.</li>
+                    <li>Explique o papel do <code>@media</code> na responsividade.</li>
+                </ol>
+            </details>
         </section>
 
-        <section>
-            <h2>13) Perguntas prováveis</h2>
-            <ol>
-                <li>Montar a estrutura básica de um HTML.</li>
-                <li>Criar uma lista ordenada ou não ordenada.</li>
-                <li>Montar uma tabela simples.</li>
-                <li>Explicar a diferença entre GET e POST.</li>
-                <li>Dizer a diferença entre class e id.</li>
-                <li>Explicar o que faz um @media.</li>
-                <li>Mostrar como ligar HTML com CSS externo.</li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>14) Resumo-relâmpago para memorizar</h2>
+        <section id="checklist">
+            <h2>9) Checklist final (leitura de 2 minutos antes da prova)</h2>
             <ul>
-                <li>HTML estrutura o conteúdo.</li>
-                <li>CSS cuida da aparência.</li>
-                <li>Formulário envia dados.</li>
-                <li>GET aparece na URL; POST não aparece na URL da mesma forma.</li>
-                <li>Classe pode repetir; ID deve ser único.</li>
-                <li>@media adapta o site para outras telas.</li>
+                <li>Sei montar HTML base: doctype, html, head, body, title, meta charset e viewport.</li>
+                <li>Sei criar links, listas, imagens e tabela.</li>
+                <li>Sei montar formulário com <code>name</code>, <code>label</code>, <code>input</code>, <code>select</code> e <code>textarea</code>.</li>
+                <li>Sei explicar GET x POST.</li>
+                <li>Sei os tipos de input comuns e alguns de HTML5.</li>
+                <li>Sei aplicar CSS inline, interno e externo.</li>
+                <li>Sei diferença entre seletor por elemento, classe e ID.</li>
+                <li>Sei explicar box model: margin, border, padding, content.</li>
+                <li>Sei fazer regra básica de responsividade com <code>@media</code>.</li>
             </ul>
+            <div class="ok"><strong>Resumo-relâmpago:</strong> HTML estrutura, CSS estiliza, formulário coleta dados, GET consulta, POST envia, classe pode repetir, ID é único, e <code>@media</code> adapta para a tela.</div>
         </section>
     </main>
 </body>
