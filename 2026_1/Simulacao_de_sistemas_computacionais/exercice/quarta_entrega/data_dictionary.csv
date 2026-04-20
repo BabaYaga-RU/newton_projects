@@ -1,0 +1,8 @@
+Column,Type,Description
+experience,number,Years of professional coding experience
+country,string,Country of residence
+education,string,Highest level of formal education
+languages,string,Primary programming languages
+frameworks,string,Primary frameworks used
+company_size,string,Number of employees in the company
+salary_usd,target,Target variable to predict
