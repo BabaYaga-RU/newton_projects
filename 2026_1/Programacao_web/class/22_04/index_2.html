@@ -15,11 +15,19 @@
                 document.getElementById("texto").innerHTML = campoTexto;
                 document.getElementById("texto").style="color: red;";
             }
+
+            function red(elemento){
+                elemento.style="background-color: red";
+            }
+            function green(elemento){
+                elemento.style="background-color: green";
+            }
         </script>
         <form>
             <input type = "text" value = ""/>
             <input type = "text" value = ""/>
-            <div id="texto"></div>
+            <div id="texto" onmouseover="red(this);" onmouseout="green(this);"></div>
+            <div onmouseover="red(this);" onmouseout="green(this);">Div Nova</div>
             <input type="button" value="Copiar" onclick="Mudar1()"/>
         </form>
     </body>
