@@ -26,17 +26,25 @@
             var result;
             switch(op){
                 case "+": 
-                    result = a + b;
-                    alert("Resultado: " + result);
-                    break
+                result = a + b;
+                alert("Resultado: " + result);
+                break
                 case "-": 
-                    result = a - b;
-                    alert("Resultado: " + result);
-                    break
+                result = a - b;
+                alert("Resultado: " + result);
+                break
                 default: alert("Não existe");
             }
             document.write(a,op,b," = ", result,"<br>");
+            
+            function validTelefone(telefone){
+                if (telefone.length !=8){
+                    alert("Telefone inválido")
+                }
+            }
 
+            document.write("<br>");
         </script>
+        <input type="button" onclick="validTelefone(telefone);">
     </body>
 </html>
