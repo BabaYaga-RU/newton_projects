@@ -7,13 +7,36 @@
         <script type="text/javascript">
             document.write("Hello World!");
             document.write("<br>");
-
+            
             var estado = window.prompt("Digite a sigla de um estado","RJ");
             var capital = "";
             if (estado == "RJ") capital = "Rio de Janeiro";
             if (estado == "MG") capital = "Belo Horizonte";
             if (estado == "SP") capital = "São Paulo";
             document.write("Estado: ", estado, "<br>Capital: ", capital);
+            
+            document.write("<br>");
+            var numero = parseInt(window.prompt("Digite um numero",""));
+            document.write(numero);
+
+            document.write("<br>");
+            var a = parseInt(window.prompt("Digite um operando",""));
+            var b = parseInt(window.prompt("Digite um operando",""));
+            var op = window.prompt("Digite um operador","");
+            var result;
+            switch(op){
+                case "+": 
+                    result = a + b;
+                    alert("Resultado: " + result);
+                    break
+                case "-": 
+                    result = a - b;
+                    alert("Resultado: " + result);
+                    break
+                default: alert("Não existe");
+            }
+            document.write(a,op,b," = ", result,"<br>");
+
         </script>
     </body>
 </html>
