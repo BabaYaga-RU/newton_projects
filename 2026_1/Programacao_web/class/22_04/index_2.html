@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javacript - 22/04</title>
+    </head>
+    <body>
+        <img src="nao_tem_1.png" >
+        <script type="text/javascript">
+            document.images[0].src = "nao_tem_2.png";
+            document.write("<br>");
+
+            function Mudar1(){
+                let campoTexto = document.forms[0].elements[0].value;
+                document.forms[0].elements[1].value = campoTexto;
+                document.getElementById("texto").innerHTML = campoTexto;
+            }
+        </script>
+        <form>
+            <input type = "text" value = ""/>
+            <input type = "text" value = ""/>
+            <div id="texto"></div>
+            <input type="button" value="Copiar" onclick="Mudar1()"/>
+        </form>
+    </body>
+</html>
