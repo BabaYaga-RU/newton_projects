@@ -1,38 +1,135 @@
 public class ListaEncadeada {
-/*
-1. Implemente a classe ListaEncadeada para armazenar valores inteiros referências
-para ligar os elementos da lista.
-*/
+    Node inicio;
+    int tamanho;
 
-//2. Crie um método para criar uma lista vazia.
+    public ListaEncadeada() {
+        inicio = null;
+        tamanho = 0;
+    }
 
-//3. Crie um método responsável por inserir um elemento no início da lista.
+    public void listaVazia() {
+        inicio = null;
+        tamanho = 0;
+    }
 
-//4. Crie um método responsável por inserir um elemento no fim da lista.
+    public void inserirInicio(int valor) {
+        Node novo = new Node(valor);
+        novo.proximo = inicio;
+        inicio = novo;
+        tamanho++;
+    }
 
-/*
-5. Crie um método responsável por inserir um elemento em uma posição específica
-da lista.
-*/
+    public void inserirFim(int valor) {
+        Node novo = new Node(valor);
+        if (inicio == null) {
+            inicio = novo;
+        } else {
+            Node atual = inicio;
+            while (atual.proximo != null) {
+                atual = atual.proximo;
+            }
+            atual.proximo = novo;
+        }
+        tamanho++;
+    }
 
-//6. Crie um método responsável por remover um elemento no início da lista.
+    public void inserirPosicao(int valor, int posicao) {
+        if (posicao < 0 || posicao > tamanho) {
+            return;
+        }
+        if (posicao == 0) {
+            inserirInicio(valor);
+            return;
+        }
+        Node atual = inicio;
+        for (int i = 0; i < posicao - 1; i++) {
+            atual = atual.proximo;
+        }
+        Node novo = new Node(valor);
+        novo.proximo = atual.proximo;
+        atual.proximo = novo;
+        tamanho++;
+    }
 
-//7. Crie um método responsável por remover um elemento no fim da lista.
+    public void removerInicio() {
+        if (inicio != null) {
+            inicio = inicio.proximo;
+            tamanho--;
+        }
+    }
 
-/*
-8. Crie um método responsável por remover um elemento em uma posição
-específica da lista.
-*/
+    public void removerFim() {
+        if (inicio == null) {
+            return;
+        }
+        if (inicio.proximo == null) {
+            inicio = null;
+            tamanho--;
+            return;
+        }
+        Node atual = inicio;
+        while (atual.proximo.proximo != null) {
+            atual = atual.proximo;
+        }
+        atual.proximo = null;
+        tamanho--;
+    }
 
-//9. Crie um método responsável por remover um elemento específico da lista.
+    public void removerPosicao(int posicao) {
+        if (posicao < 0 || posicao >= tamanho) {
+            return;
+        }
+        if (posicao == 0) {
+            removerInicio();
+            return;
+        }
+        Node atual = inicio;
+        for (int i = 0; i < posicao - 1; i++) {
+            atual = atual.proximo;
+        }
+        atual.proximo = atual.proximo.proximo;
+        tamanho--;
+    }
 
-//10. Crie um método para exibir o conteúdo de uma lista.
+    public void removerElemento(int valor) {
+        if (inicio == null) {
+            return;
+        }
+        if (inicio.valor == valor) {
+            removerInicio();
+            return;
+        }
+        Node atual = inicio;
+        while (atual.proximo != null && atual.proximo.valor != valor) {
+            atual = atual.proximo;
+        }
+        if (atual.proximo != null) {
+            atual.proximo = atual.proximo.proximo;
+            tamanho--;
+        }
+    }
 
-/*
-11. Crie um método para pesquisar por um elemento específico em uma lista e
-informar, caso o elemento exista, a posição na qual ele está armazenado.
-*/
+    public void imprimir() {
+        Node atual = inicio;
+        while (atual != null) {
+            System.out.println(atual.valor);
+            atual = atual.proximo;
+        }
+    }
 
-//12. Crie um método que retorne o número de elementos existentes na lista.
+    public int pesquisar(int valor) {
+        Node atual = inicio;
+        int posicao = 0;
+        while (atual != null) {
+            if (atual.valor == valor) {
+                return posicao;
+            }
+            atual = atual.proximo;
+            posicao++;
+        }
+        return -1;
+    }
 
-}
+    public int qntAtual() {
+        return tamanho;
+    }
