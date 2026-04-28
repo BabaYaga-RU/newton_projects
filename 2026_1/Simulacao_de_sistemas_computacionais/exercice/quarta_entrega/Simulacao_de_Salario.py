@@ -215,9 +215,7 @@ for i, v in enumerate(acuracias):
     axes[1, 1].text(i, v + 2, f'{v:.2f}%', ha='center', fontweight='bold', fontsize=11)
 
 plt.tight_layout()
-plt.savefig('Simulacao_Salarios_Analise.png', dpi=300, bbox_inches='tight')
-print("  [OK] Graficos salvos em: Simulacao_Salarios_Analise.png")
-plt.close()
+plt.show()
 
 
 # ========== ETAPA 9: RESULTADOS FINAIS NO TERMINAL ==========
