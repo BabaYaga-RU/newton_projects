@@ -121,11 +121,11 @@ else:
     mae_test = None
 
 print(f"\n  Dados de Treino:")
-print(f"    • Acuracia (R²): {acuracia_train:.4f} ({acuracia_train*100:.2f}%)")
+print(f"    • Acuracia (R2): {acuracia_train:.4f} ({acuracia_train*100:.2f}%)")
 
 if acuracia_test is not None:
     print(f"\n  Dados de Teste:")
-    print(f"    • Acuracia (R²): {acuracia_test:.4f} ({acuracia_test*100:.2f}%)")
+    print(f"    • Acuracia (R2): {acuracia_test:.4f} ({acuracia_test*100:.2f}%)")
     print(f"    • RMSE: ${rmse_test:,.2f}")
     print(f"    • MAE: ${mae_test:,.2f}")
 
@@ -179,7 +179,7 @@ if y_test is not None:
     axes[0, 0].plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2)
     axes[0, 0].set_xlabel('Salarios Reais (USD)', fontsize=11)
     axes[0, 0].set_ylabel('Salarios Simulados (USD)', fontsize=11)
-    axes[0, 0].set_title(f'Valores Reais vs Simulados (Teste)\nR² = {acuracia_test:.4f}', fontsize=12, fontweight='bold')
+    axes[0, 0].set_title(f'Valores Reais vs Simulados (Teste)\nR2 = {acuracia_test:.4f}', fontsize=12, fontweight='bold')
     axes[0, 0].grid(True, alpha=0.3)
 
 # Grafico 2: Importancia das Variaveis
@@ -227,9 +227,9 @@ print(f"Tamanho do dataset de treino: {df_train.shape[0]} registros, {df_train.s
 print(f"Tamanho do dataset de teste: {df_test.shape[0]} registros, {df_test.shape[1]} colunas")
 print(f"Variaveis categoricas codificadas: {list(categorical_columns)}")
 print("=" * 70)
-print(f"R² Treino: {acuracia_train:.4f} ({acuracia_train*100:.2f}%)")
+print(f"R2 Treino: {acuracia_train:.4f} ({acuracia_train*100:.2f}%)")
 if acuracia_test is not None:
-    print(f"R² Teste: {acuracia_test:.4f} ({acuracia_test*100:.2f}%)")
+    print(f"R2 Teste: {acuracia_test:.4f} ({acuracia_test*100:.2f}%)")
     print(f"RMSE Teste: ${rmse_test:,.2f}")
     print(f"MAE Teste: ${mae_test:,.2f}")
 print("=" * 70)
