@@ -21,6 +21,13 @@ table tr td{
 table tr td:hover{
     cursor: pointer;
 }
+fieldset{
+    font-size: 20;
+    font-weight: bold;
+    border: 2px solid blue;
+    width: 300px;
+    margin-bottom: 25px;
+}
 input[type=button]{
     width: 150px;
     height: 50px;
