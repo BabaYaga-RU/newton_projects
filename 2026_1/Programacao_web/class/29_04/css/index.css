@@ -14,12 +14,15 @@ table tr{
     font: bold 46px Verdana;
     color: white;
 }
-table tr td{
+table tr td {
     text-align: center; 
     width: 33.33%;
+    background-color: red;
+    transition: background-color 0.3s;
 }
-table tr td:hover{
+table tr td:hover {
     cursor: pointer;
+    background-color: blue;
 }
 fieldset{
     font-size: 20;
