@@ -1,7 +1,7 @@
 {
     "python.analysis.typeCheckingMode": "basic",
     "editor.rulers": [80, 120],
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Dark Modern",
     "explorer.compactFolders": false,
     "code-runner.executorMap": {
         "python": "clear ; python -u",
@@ -118,16 +118,53 @@
     "python.analysis.diagnosticSeverityOverrides": {},
     "cSpell.enabled": false,
     "workbench.productIconTheme": "bongocat",
+    "diffEditor.maxComputationTime": 0,
     "python.createEnvironment.trigger": "off",
     "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://github.com": {
             "approveRequest": false,
             "approveResponse": true
         },
-        "https://api.github.com": {
-            "approveRequest": false,
-            "approveResponse": true
-        }
+        "https://developers.zenvia.com": true,
+        "https://*.zenvia.com": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-google-auth/main/README.md": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-google-auth/main": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-google-auth": true,
+        "https://raw.githubusercontent.com/operacoesicaiu": true,
+        "https://raw.githubusercontent.com": true,
+        "https://*.githubusercontent.com": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zoho-integration/main/README.md": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zoho-integration/main": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zoho-integration": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-hablla-integration/main/README.md": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-hablla-integration/main": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-hablla-integration": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zenvia-integration/main/README.md": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zenvia-integration/main": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-zenvia-integration": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-sige-auth/main/README.md": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-sige-auth/main": true,
+        "https://raw.githubusercontent.com/operacoesicaiu/worker-sige-auth": true,
+        "https://docs.greatexpectations.io/docs/core/introduction/introduction": true,
+        "https://docs.greatexpectations.io/docs/core/introduction": true,
+        "https://docs.greatexpectations.io/docs/core": true,
+        "https://docs.greatexpectations.io/docs": true,
+        "https://docs.greatexpectations.io": true,
+        "https://*.greatexpectations.io": true,
+        "https://docs.greatexpectations.io/docs/core/connect_to_data/dataframes": true,
+        "https://docs.greatexpectations.io/docs/core/connect_to_data": true,
+        "https://docs.greatexpectations.io/docs/core/define_expectations/create_an_expectation": true,
+        "https://docs.greatexpectations.io/docs/core/define_expectations": true
     },
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "chat.viewSessions.orientation": "stacked",
+    "chat.permissions.default": "autopilot"
 }
