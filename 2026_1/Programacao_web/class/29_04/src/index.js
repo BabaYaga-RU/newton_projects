@@ -25,10 +25,10 @@ var tabuleiro = new Array(9);
 
 // Função que inicia o jogo
 initGame = function (){
-    var nomeJogador1 = document.getElementById('jogador1').Value;
-    var nomeJogador2 = document.getElementById('jogador2').Value;
+    var nomeJogador1 = document.getElementById('jogador1').value;
+    var nomeJogador2 = document.getElementById('jogador2').value;
     jogador1 = new Jogador(nomeJogador1, 0) //X
-    jogador2 = new Jogador(nomeJogador2, 0) //O
+    jogador2 = new Jogador(nomeJogador2, 1) //O
 
     jogadorAtual = jogador1;
     setLabelJogadorAtual();
@@ -127,8 +127,8 @@ além de cuidar do jogador atual da rodada e chamar as funções de verificaçõ
 */
 setOnCeil = function (cel, pos) {
     if (tabuleiro[pos] == undefined) {
-        cel.innerHTML = formas[jogadorAtual.forma];
-        tabuleiro[pos] = formas[jogadorAtual.forma];
+        cel.innerHTML = forms[jogadorAtual.forma];
+        tabuleiro[pos] = forms[jogadorAtual.forma];
 
         // Define o jogador da rodada
         (jogadorAtual.forma == 0) ? jogadorAtual = jogador2 : jogadorAtual = jogador1;
