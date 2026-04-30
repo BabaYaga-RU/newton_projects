@@ -37,9 +37,12 @@ initGame = function (){
     document.getElementById('game').style.visibility = 'visible';
 }
 
-// Reinicia a partida
+// Reinicia a pagina
 reset = function () {
     window.location.reload();
 }
 
-// Seta
+// Seta o nome do jogador da rodada na pagina HTML
+setLabelJogadorAtual = function () {
+    document.getElementById('jogadorAtual').innerHTML = "Jogador atual: " + jogadorAtual.nome;
+}
