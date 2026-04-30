@@ -46,3 +46,38 @@ reset = function () {
 setLabelJogadorAtual = function () {
     document.getElementById('jogadorAtual').innerHTML = "Jogador atual: " + jogadorAtual.nome;
 }
+
+/*
+Verifica se o tabuleiro esta completamente preenchido, 
+se estiver, significa que ninguem venceu a rodada
+*/
+tabuleiroIsFilled = function () {
+    var preenchido = 0;
+    for (var i = 0; i < tabuleiro.length; i++){
+        if (tabuleiro[i] != undefined){
+            preenchido ++;
+        }
+    }
+    return preenchido == tabuleiro.length;
+}
+
+/*
+Verifica a existencia de ocorrencias de um mesmo elemento (X ou O) nas linhas do tabuleiro,
+procurando um vencedor
+*/
+allElements
+
+/*
+Preenche a célula da tabela HTML escolhida pelo usuario ao clicar, 
+além de cuidar do jogador atual da rodada e chamar as funções de verificações de algum ganhador
+*/
+setOnCeil = function (cel, pos) {
+    if (tabuleiro[pos] == undefined) {
+        cel.innerHTML = formas[jogadorAtual.forma];
+        tabuleiro[pos] = formas[jogadorAtual.forma];
+
+        // Define o jogador da rodada
+        (jogadorAtual.forma == 0) ? jogadorAtual = jogador2 : jogadorAtual = jogador1;
+        setLabelJogadorAtual();
+    } else alert('Ops. ')
+}
