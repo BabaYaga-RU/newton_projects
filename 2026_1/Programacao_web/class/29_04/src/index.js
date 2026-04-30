@@ -65,7 +65,61 @@ tabuleiroIsFilled = function () {
 Verifica a existencia de ocorrencias de um mesmo elemento (X ou O) nas linhas do tabuleiro,
 procurando um vencedor
 */
-allElements
+allElementsInSomeLine = function () {
+    for (var i = 0; i < 7; i += 3){
+        if (tabuleiro[i] == 'X' && tabuleiro[i + 1] == 'X' && tabuleiro[i + 2] == 'X'){
+            alert(jogador1.nome + ' wins!!!');
+            reset();
+        }
+        if (tabuleiro[i] == 'O' && tabuleiro[i + 1] == 'O' && tabuleiro[i + 2] == 'O'){
+            alert(jogador2.nome + ' wins!!!');
+            reset();
+        }
+    }
+}
+
+/*
+Verifica a existencia de ocorrencias de um mesmo elemento (X ou O) nas colunas do tabuleiro,
+procurando um vencedor
+*/
+allElementsInSomeColumn = function () {
+    for (var i = 0; i < 3; i++){
+        if (tabuleiro[i] == 'X' && tabuleiro[i + 3] == 'X' && tabuleiro[i + 6] == 'X'){
+            alert(jogador1.nome + ' wins!!!');
+            reset();
+        }
+        if (tabuleiro[i] == 'O' && tabuleiro[i + 3] == 'O' && tabuleiro[i + 6] == 'O'){
+            alert(jogador2.nome + ' wins!!!');
+            reset();
+        }
+    }
+}
+
+/*
+Verifica a existencia de ocorrencias de um mesmo elemento (X ou O) nas diagonais do tabuleiro,
+procurando um vencedor
+*/
+allElementsInSomeDiagonal = function () {
+    // Diagonal principal (0, 4, 8)
+    if (tabuleiro[0] == 'X' && tabuleiro[4] == 'X' && tabuleiro[8] == 'X'){
+        alert(jogador1.nome + ' wins!!!');
+        reset();
+    }
+    if (tabuleiro[0] == 'O' && tabuleiro[4] == 'O' && tabuleiro[8] == 'O'){
+        alert(jogador2.nome + ' wins!!!');
+        reset();
+    }
+    
+    // Diagonal secundária (2, 4, 6)
+    if (tabuleiro[2] == 'X' && tabuleiro[4] == 'X' && tabuleiro[6] == 'X'){
+        alert(jogador1.nome + ' wins!!!');
+        reset();
+    }
+    if (tabuleiro[2] == 'O' && tabuleiro[4] == 'O' && tabuleiro[6] == 'O'){
+        alert(jogador2.nome + ' wins!!!');
+        reset();
+    }
+}
 
 /*
 Preenche a célula da tabela HTML escolhida pelo usuario ao clicar, 
@@ -80,8 +134,7 @@ setOnCeil = function (cel, pos) {
         (jogadorAtual.forma == 0) ? jogadorAtual = jogador2 : jogadorAtual = jogador1;
         setLabelJogadorAtual();
     } else alert('Ops. Already marked value for this =/');
-
-    /*
+    
     allElementsInSomeLine();
     allElementsInSomeColumn();
     allElementsInSomeDiagonal();
@@ -90,6 +143,4 @@ setOnCeil = function (cel, pos) {
         alert('Nobody wind! :( Try Again');
         reset();
     }
-    */
-
 }
