@@ -79,5 +79,15 @@ setOnCeil = function (cel, pos) {
         // Define o jogador da rodada
         (jogadorAtual.forma == 0) ? jogadorAtual = jogador2 : jogadorAtual = jogador1;
         setLabelJogadorAtual();
-    } else alert('Ops. ')
+    } else alert('Ops. Already marked value for this =/');
+
+    allElementsInSomeLine();
+    allElementsInSomeColumn();
+    allElementsInSomeDiagonal();
+
+    if (tabuleiroIsFilled()) {
+        alert('Nobody wind! :( Try Again');
+        reset();
+    }
+
 }
