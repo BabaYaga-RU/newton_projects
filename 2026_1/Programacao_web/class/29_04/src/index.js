@@ -1,6 +1,6 @@
 // Deixar a div do jogo escondida no momento que a página é carregada
 window.onload = function (){
-    document.getElementById('game').style.visibility = 'hidden';
+    document.getElementById('game').style.display = 'none';
 }
 
 // Cria um objeto do jogador
@@ -34,7 +34,7 @@ initGame = function (){
     setLabelJogadorAtual();
 
     // Apos definição de jogadores, exibe a div e inicia o jogo
-    document.getElementById('game').style.visibility = 'visible';
+    document.getElementById('game').style.display = 'block';
 }
 
 // Reinicia a pagina
@@ -81,6 +81,7 @@ setOnCeil = function (cel, pos) {
         setLabelJogadorAtual();
     } else alert('Ops. Already marked value for this =/');
 
+    /*
     allElementsInSomeLine();
     allElementsInSomeColumn();
     allElementsInSomeDiagonal();
@@ -89,5 +90,6 @@ setOnCeil = function (cel, pos) {
         alert('Nobody wind! :( Try Again');
         reset();
     }
+    */
 
 }

@@ -4,19 +4,23 @@ table{
     border: 1px solid black;
 }
 table tr{
-    background-color: red;
     font: bold 46px Verdana;
     color: white;
 }
 table tr td {
     text-align: center; 
     width: 33.33%;
-    background-color: red;
-    transition: background-color 0.3s;
+    background-image: url('../assents/img/Eee.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transition: 0.3s; 
 }
+
 table tr td:hover {
     cursor: pointer;
-    background-color: blue;
+    background-image: url('../assents/img/Aaa.png'); 
+    filter: brightness(1.1); 
 }
 fieldset{
     font-size: 20;
