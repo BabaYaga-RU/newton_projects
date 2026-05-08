@@ -10,6 +10,11 @@ vetor de tamanho n = 5 (índices de 0 a 4)
 (4 + 1) % 5
 (4 + 1) (mod 5) = 0
 
+Outros Exemplos
+(4 + 2) % 5 = 1 e sobra 1. (Resultado: 1)
+(4 + 3) % 5 = 1 e sobra 2. (Resultado: 2)
+(1 + 1) % 5 = 0 e sobra 2. (Resultado: 2)
+
 Python
 # Para inserir um elemento na próxima posição livre
 posicao_inserir = (fim + 1) % n
