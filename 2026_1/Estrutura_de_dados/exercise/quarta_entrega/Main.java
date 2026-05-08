@@ -17,8 +17,46 @@ específica da lista.
 informar, caso o elemento exista, a posição na qual ele está armazenado.
 12. Crie um método que retorne o número de elementos existentes na lista.
 */
+
+
 public class Main {
     public static void main(String[] args) {
-       
+        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+
+        lista.inserirInicio(10);
+        lista.inserirInicio(20);
+        lista.inserirInicio(30);
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.inserirFim(40);
+        lista.inserirFim(50);
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.inserirPosicao(99, 2);
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        System.out.println("Pesquisar 99: " + lista.pesquisar(99));
+
+        lista.removerInicio();
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.removerFim();
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.removerElemento(99);
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.removerPosicao(1);
+        lista.imprimir();
+        System.out.println("Quantidade: " + lista.qntAtual());
+
+        lista.listaVazia();
+        System.out.println("Quantidade apos esvaziar: " + lista.qntAtual());
     }
 }

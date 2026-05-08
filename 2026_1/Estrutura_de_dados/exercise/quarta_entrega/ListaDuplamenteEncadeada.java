@@ -73,15 +73,79 @@ public class ListaDuplamenteEncadeada {
         tamanho--;
     }
 
-    public void imprimir() {
+    public void inserirPosicao(int valor, int posicao) {
+        if (posicao < 0 || posicao > tamanho) {
+            return;
+        }
+        if (posicao == 0) {
+            inserirInicio(valor);
+            return;
+        }
+        if (posicao == tamanho) {
+            inserirFim(valor);
+            return;
+        }
+        Node novo = new Node(valor);
+        Node atual = inicio;
+        for (int i = 0; i < posicao; i++) {
+            atual = atual.proximo;
+        }
+        novo.anterior = atual.anterior;
+        novo.proximo = atual;
+        atual.anterior.proximo = novo;
+        atual.anterior = novo;
+        tamanho++;
+    }
+
+    public void removerPosicao(int posicao) {
+        if (posicao < 0 || posicao >= tamanho) {
+            return;
+        }
+        if (posicao == 0) {
+            removerInicio();
+            return;
+        }
+        if (posicao == tamanho - 1) {
+            removerFim();
+            return;
+        }
+        Node atual = inicio;
+        for (int i = 0; i < posicao; i++) {
+            atual = atual.proximo;
+        }
+        atual.anterior.proximo = atual.proximo;
+        atual.proximo.anterior = atual.anterior;
+        tamanho--;
+    }
+
+    public void removerElemento(int valor) {
         Node atual = inicio;
         while (atual != null) {
-            System.out.println(atual.valor);
+            if (atual.valor == valor) {
+                if (atual == inicio) {
+                    removerInicio();
+                } else if (atual == fim) {
+                    removerFim();
+                } else {
+                    atual.anterior.proximo = atual.proximo;
+                    atual.proximo.anterior = atual.anterior;
+                    tamanho--;
+                }
+                return;
+            }
             atual = atual.proximo;
         }
     }
 
-    public int qntAtual() {
-        return tamanho;
+    public int pesquisar(int valor) {
+        Node atual = inicio;
+        int posicao = 0;
+        while (atual != null) {
+            if (atual.valor == valor) {
+                return posicao;
+            }
+            atual = atual.proximo;
+            posicao++;
+        }
+        return -1;
     }
-}
