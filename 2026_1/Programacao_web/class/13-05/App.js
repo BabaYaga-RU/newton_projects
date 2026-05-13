@@ -10,7 +10,10 @@ function Soma(){
 function App(){
     const soma = Soma();
     return (
-        <h1>A soma é {soma} </h1>
+        <div>
+            <h1>A soma é {soma} </h1>
+            <h1>A soma é {soma} </h1>
+        </div>
     )
 }
 
